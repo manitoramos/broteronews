@@ -41,7 +41,7 @@
 
 </head>
 
-<body>
+<body bgcolor="#E6E6FA">
 
     <div id="wrapper">
 
