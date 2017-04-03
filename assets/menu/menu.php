@@ -98,24 +98,24 @@ margin-right: 15px !important;
 				<ul class="dropdown-menu mega-dropdown-menu mannn">
 					<li class="col-sm-3">
 						<ul>
-							<li class="dropdown-header">Mais Vistas</li>                            
+							<li class="dropdown-header">Noticias Mais Vistas</li>                            
                             <div id="menCollection" class="carousel slide" data-ride="carousel">
                               <div class="carousel-inner">
-                                <div class="item active">
-                                    <a href="#"><img src="http://placehold.it/254x150/ff3546/f5f5f5/&text=New+Collection" class="img-responsive" alt="product 1"></a>
-                                    <h4><small>Summer dress floral prints</small></h4>                                        
-                                    <button class="btn btn-primary" type="button">49,99 €</button> <button href="#" class="btn btn-default" type="button"><span class="glyphicon glyphicon-heart"></span> Add to Wishlist</button>       
-                                </div><!-- End Item -->
-                                <div class="item">
-                                    <a href="#"><img src="http://placehold.it/254x150/3498db/f5f5f5/&text=New+Collection" class="img-responsive" alt="product 2"></a>
-                                    <h4><small>Gold sandals with shiny touch</small></h4>                                        
-                                    <button class="btn btn-primary" type="button">9,99 €</button> <button href="#" class="btn btn-default" type="button"><span class="glyphicon glyphicon-heart"></span> Add to Wishlist</button>        
-                                </div><!-- End Item -->
-                                <div class="item">
-                                    <a href="#"><img src="http://placehold.it/254x150/2ecc71/f5f5f5/&text=New+Collection" class="img-responsive" alt="product 3"></a>
-                                    <h4><small>Denin jacket stamped</small></h4>                                        
-                                    <button class="btn btn-primary" type="button">49,99 €</button> <button href="#" class="btn btn-default" type="button"><span class="glyphicon glyphicon-heart"></span> Add to Wishlist</button>      
-                                </div><!-- End Item -->                                
+							  <?php
+							  //SLIDE NOTICIAS
+								$first = 0;//para meter a primeira noticia active
+								$SQL5 = "SELECT * FROM noticias WHERE s_noticia=1";
+								$resultado5 = mysql_query($SQL5,$LIGA);
+								while($registo5 = mysql_fetch_array($resultado5))
+								{
+									if($first == 0){$first++;echo "<div class=\"item active\">";}//ficar ativo
+									else{echo "<div class=\"item\">";}//para ficar como item
+										echo "<a href=\"#\"><img src=\"{$registo5['imagem']}\" class=\"\" style=\"width:305px;height:180px;\" alt=\"product 1\"></a>";
+										echo "<h4><small>{$registo5['desshort']}</small></h4>";                                       
+										//echo "<button class=\"btn btn-primary\" type=\"button\">Ler Noticia</button> <button href=\"#\" class=\"btn btn-default\" type=\"button\"><span class=\"glyphicon glyphicon-heart\"></span> Adicionar aos Favoritos</button>";       
+										echo "</div>";//End Item
+								}
+							  ?>                             
                               </div><!-- End Carousel Inner -->
                               <!-- Controls -->
                               <a class="left carousel-control" style="width: 30px;height: 30px;top: -35px;right: 30px;left: inherit;" href="#menCollection" role="button" data-slide="prev">
@@ -128,7 +128,7 @@ margin-right: 15px !important;
                               </a>
                             </div><!-- /.carousel -->
                             <li class="divider"></li>
-                            <li><a href="#">View all Collection <span class="glyphicon glyphicon-chevron-right pull-right"></span></a></li>
+                            <li><a href="#">Ver Todas as Noticias <span class="glyphicon glyphicon-chevron-right pull-right"></span></a></li>
 						</ul>
 					</li>
 					<li class="col-sm-3">
@@ -165,7 +165,7 @@ margin-right: 15px !important;
 				</ul>				
 			</li>
             <li class="dropdown mega-dropdown">
-    			<a href="#" class="dropdown-toggle" data-toggle="dropdown">Women <span class="caret"></span></a>				
+    			<a href="#" class="dropdown-toggle" data-toggle="dropdown">Categorias <span class="caret"></span></a>				
 				<ul class="dropdown-menu mega-dropdown-menu mannn">
 					<li class="col-sm-3">
     					<ul>
@@ -394,4 +394,5 @@ $(document).ready(function(){
     );
 });
 </script>
-</bo
+</body>
+</html>
