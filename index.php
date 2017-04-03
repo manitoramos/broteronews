@@ -182,9 +182,9 @@
 		                        echo "<div class=\" ex2\">";
 									echo "<span class=\"pull-left text-muted\" style=\"font-size:70%\">{$registo2['data']}</span>";
 									echo "<div class=\"pull-right text-muted monte\" style=\"font-size:70%;color:black;\"><span>Futebol</span></div>";
-		                            echo "<a href=\"noticia.php?not={$registo2['id']}\"><img class=\"immgg\" src=\"{$registo2['imagem']}\" alt=\"\"></a>";
+		                            echo "<a href=\"noticia@{$registo2['id']}\"><img class=\"immgg\" src=\"{$registo2['imagem']}\" alt=\"\"></a>";
 		                            echo "<div class=\"caption\">";
-		                                echo "<h4><a style=\"text-decoration:none;\" href=\"noticia.php?not={$registo2['id']}\">{$registo2['titulo']}</a></h4>";
+		                                echo "<h4><a style=\"text-decoration:none;\" href=\"noticia@{$registo2['id']}\">{$registo2['titulo']}</a></h4>";
 		                                echo "<p style=\"color:black;\">{$registo2['desshort']}</p>";
 		                            echo "</div>";
 		                        echo "</div>";
