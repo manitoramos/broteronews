@@ -15,5 +15,6 @@ RewriteRule ^Admin@comentarios/?$ admin/pages/comentarios.php [L]
 RewriteRule ^Admin@nova_noticia/?$ admin/pages/noticia.php [L]
 RewriteRule ^Admin@coment/(.*)/(.*) admin/pages/assets/php/coment.php?sku=$1&info=$2 [L]
 RewriteRule ^Admin@users/?$ admin/pages/usersperm.php [L]
+RewriteRule ^perfil/?$ perfil.php
 
 

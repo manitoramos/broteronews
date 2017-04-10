@@ -250,7 +250,7 @@
                                     <a href="#">Users<span class="fa arrow"></span></a>
 									<ul class="nav nav-third-level">
                                         <li>
-                                            <a href="home@user_permissoes">Permissões</a>
+                                            <a href="Admin@users">Permissões</a>
                                         </li>
                                         <li>
                                             <a href="#">##</a>

@@ -95,6 +95,11 @@
 							<i class="glyphicon glyphicon-flag"></i>
 							Help </a>
 						</li>
+						<li>
+							<a href="#">
+							<i class="fa fa-chevron-left"></i>
+							Back </a>
+						</li>
 					</ul>
 				</div>
 				<!-- END MENU -->

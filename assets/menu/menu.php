@@ -286,14 +286,27 @@ margin-right: 15px !important;
 			$SQL3 = "SELECT * FROM users where user='{$_SESSION['user']}'";
 			$resultado3 = mysql_query($SQL3,$LIGA);
 			$registo3 = mysql_fetch_array($resultado3);
-            echo "<li class=\"dropdown\"><a href=\"#\" class=\"dropdown-toggle\" data-toggle=\"dropdown\"><img src=\"http://placehold.it/120x120\" width=\"20px\" style=\"position:relative; left: -5px;\">{$registo3['user']}";?>
+				if($registo3['img'] == ""){
+					echo "<li class=\"dropdown\"><a href=\"#\" class=\"dropdown-toggle\" data-toggle=\"dropdown\"><img src=\"assets/img-perfil/default.jpg\" width=\"20px\" style=\"position:relative; left: -5px;\">{$registo3['user']}";
+				}
+				else{
+					echo "<li class=\"dropdown\"><a href=\"#\" class=\"dropdown-toggle\" data-toggle=\"dropdown\"><img src=\"{$registo3['img']}\" width=\"20px\" style=\"position:relative; left: -5px;\">{$registo3['user']}";
+				}
+			?>
             <b class="caret"></b></a>
                 <ul class="dropdown-menu">
                     <li>
                         <div class="navbar-content">
                             <div class="row">
                                 <div class="col-md-5">
-                                    <img src="http://placehold.it/120x120" alt="Alternate Text" class="img-responsive" />
+								<?php 
+									if($registo3['img'] == ""){
+										echo "<img src=\"assets/img-perfil/default.jpg\" alt=\"Alternate Text\" class=\"img-responsive\" />";
+									}
+									else{
+										echo "<img src=\"{$registo3['img']}\" alt=\"Alternate Text\" class=\"img-responsive\" />";
+									}
+								?>
                                     <p class="text-center small"><a href="#">Mudar Foto</a></p>
                                 </div>
 								<?php
@@ -302,12 +315,12 @@ margin-right: 15px !important;
 										echo "<span>{$registo3['nome']}</span>";
 										echo "<p class=\"text-muted small\">{$registo3['email']}</p>";
 										echo "<div class=\"divider\"></div>";
-										echo "<a href=\"#\" class=\"btn btn-primary btn-sm\">Ver Perfil</a>&nbsp;";
+										echo "<a href=\"perfil\" class=\"btn btn-primary btn-sm\">Ver Perfil</a>&nbsp;";
 									
 				
-									if($registo3['previlegios'] == 'Admin')
+									if($registo3['previlegios'] == '3')
 									{
-										echo "<a href=\"Admin@home\" class=\"btn btn-primary btn-sm\">Admin</a>";
+										echo "<a href=\"Admin@home\" class=\"btn btn-warning btn-sm\">Admin</a>";
 									}
 								?>
 									
@@ -335,6 +348,27 @@ margin-right: 15px !important;
   </nav>
 </div>
 
+<!-- Modal -->
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Foto de Perfil</h4>
+        </div>
+        <div class="modal-body">
+          <p>Some text in the modal.</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+
 <script>
 	$(document).ready(function (e) {
 	$("#login").on('submit',(function(e) {
@@ -355,7 +389,7 @@ margin-right: 15px !important;
 					alertify.success("Login com Sucesso sera redirecionado em breve!");
 					setTimeout(function () {
 					window.location.href = "home";
-					}, 3000);
+					}, 2000);
 				}else if(data == "false"){
 					alertify.delay(2000);
 					alertify.closeLogOnClick(true);
