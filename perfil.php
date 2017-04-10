@@ -3,6 +3,7 @@
 	if(!isset($_SESSION['user'])){header ("Location: home");}
 	$_SESSION['pagina'] = "http://" . $_SERVER["SERVER_NAME"] . $_SERVER["PHP_SELF"];
 	include("assets/bd/bd.php");
+	date_default_timezone_set('Europe/Lisbon');
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -149,7 +150,10 @@
             </div>
             <div class="panel-body">
               <div class="row">
-                <div class="col-md-3 col-lg-3 " align="center"> <img alt="User Pic" src="<?php if($registo8['img'] == ""){ echo "assets/img-perfil/default.jpg"; }else{ echo $registo8['img'];} ?>" class="img-circle img-responsive"> </div>
+                <div class="col-md-3 col-lg-3 " align="center"> 
+					<img alt="User Pic" src="<?php if($registo8['img'] == ""){ echo "assets/img-perfil/default.jpg"; }else{ echo $registo8['img'];} ?>" class="img-circle img-responsive"> 
+					<a href="#"><font size="4"><i style="top: -200px; left: -80px;" class="glyphicon glyphicon-edit"></i></font></a>
+				</div>
                 
                 <!--<div class="col-xs-10 col-sm-10 hidden-md hidden-lg"> <br>
                   <dl>
@@ -175,7 +179,7 @@
                         <td><?php echo $registo8['user']; ?></td>
                       </tr>
                       <tr>
-                        <td>Previlegios:</td>
+                        <td>Acessos:</td>
 						<?php 
 						if($registo8['previlegios'] == "3"){
 							echo "<td><span style=\"color:red;\">Administrador</span></td>";
