@@ -217,13 +217,12 @@
                         <td>Email</td>
                         <td><a href="mailto:info@support.com"><?php {echo $registo8['email'];} ?></a></td>
                       </tr>
-
-                     
                     </tbody>
                   </table>
-                  
+                  <!--
                   <a href="#" class="btn btn-default">Mudar Password</a>
                   <a href="#" class="btn btn-primary">Team Sales Performance</a>
+				  -->
                 </div>
               </div>
             </div>
@@ -239,6 +238,7 @@
         </div>
       </div>
     </div>
+	<br>
 
 					<!-- standard version -->
 					<script src="https://cdn.rawgit.com/alertifyjs/alertify.js/v1.0.10/dist/js/alertify.js"></script>
