@@ -152,7 +152,8 @@
               <div class="row">
                 <div class="col-md-3 col-lg-3 " align="center"> 
 					<img alt="User Pic" src="<?php if($registo8['img'] == ""){ echo "assets/img-perfil/default.jpg"; }else{ echo $registo8['img'];} ?>" class="img-circle img-responsive"> 
-					<a href="#"><font size="4"><i style="top: -200px; left: -80px;" class="glyphicon glyphicon-edit"></i></font></a>
+					<!--<a href="#"><font size="4"><i style="top: -200px; left: -80px;" class="glyphicon glyphicon-edit"></i></font></a>-->
+					<a href="#">Alterar Foto</a>
 				</div>
                 
                 <!--<div class="col-xs-10 col-sm-10 hidden-md hidden-lg"> <br>
