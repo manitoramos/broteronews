@@ -73,7 +73,7 @@
 
 	function hey(){
 		alertify
-		  .defaultValue("Write the old password")
+		  .defaultValue("Escreve a Antiga Password")
 		  .prompt("Mudar Password",
 			function (val, ev) {
 
@@ -81,7 +81,7 @@
 			  ev.preventDefault();
 
 				alertify
-				  .defaultValue("Write the new password")
+				  .defaultValue("Escreve a Nova Password")
 				  .prompt("Mudar Password",
 					function (val2, ev) {
 
@@ -89,14 +89,14 @@
 					  ev.preventDefault();
 
 					  // The value entered is availble in the val variable.
-					  alertify.success("Old: " + val + " New: " + val2);
+					  alertify.success("Antiga: " + val + " Nova: " + val2);
 
 					}, function(ev) {
 
 					  // The click event is in the event variable, so you can use it here.
 					  ev.preventDefault();
 
-					  alertify.error("You've clicked Cancel");
+					  alertify.error("Cancelas-te a operação");
 
 					}
 				  );
@@ -106,7 +106,7 @@
 			  // The click event is in the event variable, so you can use it here.
 			  ev.preventDefault();
 
-			  alertify.error("You've clicked Cancel");
+			  alertify.error("Cancelas-te a operação");
 
 			}
 		  );

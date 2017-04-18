@@ -93,7 +93,7 @@ margin-right: 15px !important;
 	
 	<div class="collapse navbar-collapse js-navbar-collapse">
 		<ul class="nav navbar-nav">
-			<li class="dropdown mega-dropdown">
+			<li class="dropdown mega-dropdown cross">
 				<a href="#" class="dropdown-toggle" data-toggle="dropdown">Noticias <span class="caret"></span></a>				
 				<ul class="dropdown-menu mega-dropdown-menu mannn">
 					<li class="col-sm-3">
@@ -164,7 +164,7 @@ margin-right: 15px !important;
 					</li>
 				</ul>				
 			</li>
-            <li class="dropdown mega-dropdown">
+            <li class="dropdown mega-dropdown cross">
     			<a href="#" class="dropdown-toggle" data-toggle="dropdown">Categorias <span class="caret"></span></a>				
 				<ul class="dropdown-menu mega-dropdown-menu mannn">
 					<li class="col-sm-3">
@@ -287,10 +287,10 @@ margin-right: 15px !important;
 			$resultado3 = mysql_query($SQL3,$LIGA);
 			$registo3 = mysql_fetch_array($resultado3);
 				if($registo3['img'] == ""){
-					echo "<li class=\"dropdown\"><a href=\"#\" class=\"dropdown-toggle\" data-toggle=\"dropdown\"><img src=\"assets/img-perfil/default.jpg\" width=\"20px\" style=\"position:relative; left: -5px;\">{$registo3['user']}";
+					echo "<li class=\"dropdown cross\"><a href=\"#\" class=\"dropdown-toggle\" data-toggle=\"dropdown\"><img src=\"assets/img-perfil/default.jpg\" width=\"20px\" style=\"position:relative; left: -5px;\">{$registo3['user']}";
 				}
 				else{
-					echo "<li class=\"dropdown\"><a href=\"#\" class=\"dropdown-toggle\" data-toggle=\"dropdown\"><img src=\"{$registo3['img']}\" width=\"20px\" style=\"position:relative; left: -5px;\">{$registo3['user']}";
+					echo "<li class=\"dropdown cross\"><a href=\"#\" class=\"dropdown-toggle\" data-toggle=\"dropdown\"><img src=\"{$registo3['img']}\" width=\"20px\" style=\"position:relative; left: -5px;\">{$registo3['user']}";
 				}
 			?>
             <b class="caret"></b></a>
@@ -416,7 +416,7 @@ margin-right: 15px !important;
 
 <script type="text/javascript">
 $(document).ready(function(){
-    $(".dropdown").hover(            
+    $(".cross").hover(            
         function() {
             $('.dropdown-menu', this).not('.in .dropdown-menu').stop(true,true).slideDown("400");
             $(this).toggleClass('open');        
