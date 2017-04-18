@@ -241,7 +241,7 @@
                             <!-- /input-group -->
                         </li>
                         <li>
-                            <a href="home"><i class="fa fa-dashboard fa-fw"></i> Painel de Controlo</a>
+                            <a href="Admin@home"><i class="fa fa-dashboard fa-fw"></i> Painel de Controlo</a>
                         </li>
 						<li>
                             <a href="#"><i class="fa fa-sitemap fa-fw"></i> Admin<span class="fa arrow"></span></a>

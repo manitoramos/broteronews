@@ -6,6 +6,7 @@
 <html lang="en">
 
 <head>
+
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -35,6 +36,7 @@
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
+
 </head>
 
 <body>
@@ -49,12 +51,12 @@
             <div class="container-fluid">
                 <div class="row">
 				<div id="esc_user" class="row">
-                    <div class="col-md-12">
+                    <div class="col-md-11">
 						<br>
                         <a class="btn btn-primary" data-toggle="modal" data-target="#usuario"><i class="fa fa-fw -square -circle fa-plus-square"></i> Novo Usuario</a>
 						<br><br>
 					</div>
-                    <div class="col-md-12">
+                    <div class="col-md-11">
                         <table class="table table-hover table-striped">
                             <tbody>
 							<?php
@@ -75,7 +77,7 @@
 										</td>
 										<td>
 											<h4>
-												<b>{$registo36['acesso']}</b>
+												<b>{$registo36['Acesso']}</b>
 											</h4>
 											<p>@{$registo35['user']}</p>
 										</td>
@@ -99,19 +101,10 @@
 										</td>
 										<td>{$registo35['since']}</td>
 										<td>
-											<div class=\"btn-group\">";
-												if($registo35['estado'] == 1)
-												{
-													echo "<button class=\"btn btn-default\" id=\"des{$registo35['id']}\" onclick=\"desativar({$registo35['id']})\" value=\"desativar\" type=\"button\">
-														  <i class=\"fa fa-fw s fa-remove\"></i>Desativar</button>";
-												}
-												else	
-												{
-													echo "<button class=\"btn btn-default\" id=\"des{$registo35['id']}\" onclick=\"desativar({$registo35['id']})\" value=\"ativar\" type=\"button\">
-														  <i class=\"fa fa-fw s fa-check\"></i>Ativar</button>";
-												}	
-												echo "
-												<button id=\"conf{$registo35['id']}\" class=\"btn btn-default\" value=\"{$registo35['id']}\" onclick=\"configurar({$registo35['id']})\" type=\"button\">
+											<div class=\"btn-group\">
+												<button class=\"btn btn-default\" id=\"des{$registo35['id']}\" onclick=\"desativar({$registo35['id']})\" value=\"desativar\" type=\"button\">
+													<i class=\"fa fa-fw s fa-remove\"></i>Desativar</button>
+												<button id=\"conf{$registo35['id']}\" class=\"btn btn-default\" value=\"right\" onclick=\"configurar({$registo35['id']})\" type=\"button\">
 													<i class=\"fa fa-fw fa-cog\"></i>Configurar</button>
 											</div>
 										</td>
@@ -125,29 +118,20 @@
  
 		</div>
 	
-                <div  id="user_perm" class="row">
+                <div  id="user_perm" class="row" style="display:none;">
 				<br>
 				<div class="col-md-3">
-				<?php
-								$SQL39 = "SELECT * FROM users Where id='{$_SESSION['usid']}'";
-								$resultado39 = mysql_query($SQL39,$LIGA);
-								$registo39 = mysql_fetch_array($resultado39);
-
-								$SQL40 = "SELECT * FROM acesso WHERE id='{$registo39['previlegios']}'";
-								$resultado40 = mysql_query($SQL40,$LIGA);
-								$registo40 = mysql_fetch_array($resultado40);
-				?>
 					<div class="profile-sidebar">
 						<!-- SIDEBAR USERPIC -->
 						<div class="profile-userpic">
 						<?php 
-							if($registo39['img'] == "")
+							if($registo35['img'] == "")
 							{
 								echo "<img src=\"http://pingendo.github.io/pingendo-bootstrap/assets/user_placeholder.png\" class=\"img-responsive\">";
 							}
 							else
 							{
-								echo "<img src=\"{$registo39['img']}\" class=\"img-responsive\">";
+								echo "<img src=\"{$registo35['img']}\" class=\"img-responsive\">";
 							}
 							
 						?>
@@ -156,10 +140,10 @@
 						<!-- SIDEBAR USER TITLE -->
 						<div class="profile-usertitle">
 							<div class="profile-usertitle-name">
-								<?php echo $registo39['nome']; ?>
+								Marcus Doe
 							</div>
 							<div class="profile-usertitle-job">
-								<?php echo $registo36['acesso'] ?>
+								Developer
 							</div>
 						</div>
 						<!-- END SIDEBAR USER TITLE -->
@@ -183,9 +167,14 @@
 									Account Settings </a>
 								</li>
 								<li>
+									<a href="#" target="_blank">
+									<i class="glyphicon glyphicon-ok"></i>
+									Tasks </a>
+								</li>
+								<li>
 									<a href="#">
-									<i class="glyphicon glyphicon-comment"></i>
-									Comentarios </a>
+									<i class="glyphicon glyphicon-flag"></i>
+									Help </a>
 								</li>
 								<li>
 									<a href="#" onclick="escolher_user()">

@@ -69,6 +69,49 @@
         alert("This is a demo.\n :-)");
     });
 });
+
+
+	function hey(){
+		alertify
+		  .defaultValue("Write the old password")
+		  .prompt("Mudar Password",
+			function (val, ev) {
+
+			  // The click event is in the event variable, so you can use it here.
+			  ev.preventDefault();
+
+				alertify
+				  .defaultValue("Write the new password")
+				  .prompt("Mudar Password",
+					function (val2, ev) {
+
+					  // The click event is in the event variable, so you can use it here.
+					  ev.preventDefault();
+
+					  // The value entered is availble in the val variable.
+					  alertify.success("Old: " + val + " New: " + val2);
+
+					}, function(ev) {
+
+					  // The click event is in the event variable, so you can use it here.
+					  ev.preventDefault();
+
+					  alertify.error("You've clicked Cancel");
+
+					}
+				  );
+
+			}, function(ev) {
+
+			  // The click event is in the event variable, so you can use it here.
+			  ev.preventDefault();
+
+			  alertify.error("You've clicked Cancel");
+
+			}
+		  );
+		  
+	}
 	
 	</script>
 	
@@ -210,7 +253,7 @@
                         <td>Password</td>
                         <td>
 							<?php echo "************";?> &nbsp; &nbsp;
-							<a href="edit.html" data-original-title="Edit this user" data-toggle="tooltip" type="" class="warning">
+							<a href="#" onclick="hey()" data-original-title="Edit this user" data-toggle="tooltip" type="" class="warning">
 							<i class="glyphicon glyphicon-edit"></i></a>
 						</td>
                       </tr>
@@ -230,7 +273,15 @@
                  <div class="panel-footer">
                         <a data-original-title="Broadcast Message" data-toggle="tooltip" type="button" class="btn btn-sm btn-primary"><i class="glyphicon glyphicon-envelope"></i></a>
                         <span class="pull-right">
-                            <a href="edit.html" data-original-title="Edit this user" data-toggle="tooltip" type="button" class="btn btn-sm btn-warning"><i class="glyphicon glyphicon-edit"></i></a>
+						<?php
+						
+							if($registo3['previlegios'] == '3')
+							{
+								echo "<a href=\"Admin@home\" class=\"btn btn-warning btn-sm\">Admin</a>";
+							}
+									
+						?>
+                            <!--<a href="edit.html" data-original-title="Edit this user" data-toggle="tooltip" type="button" class="btn btn-sm btn-warning"><i class="glyphicon glyphicon-edit"></i></a>-->
                             <a data-original-title="Remove this user" data-toggle="tooltip" type="button" href="sair@logout" class="btn btn-sm btn-danger">Logout<i class=""></i></a>
                         </span>
                     </div>
