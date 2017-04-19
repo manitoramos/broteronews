@@ -98,7 +98,7 @@ margin-right: 15px !important;
 				<ul class="dropdown-menu mega-dropdown-menu mannn">
 					<li class="col-sm-3">
 						<ul>
-							<li class="dropdown-header">Noticias Mais Vistas</li>                            
+							<li class="dropdown-header">Noticias Em Destaque</li>                            
                             <div id="menCollection" class="carousel slide" data-ride="carousel">
                               <div class="carousel-inner">
 							  <?php

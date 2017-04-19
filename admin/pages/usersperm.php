@@ -51,7 +51,8 @@
 				<div id="esc_user" class="row">
                     <div class="col-md-12">
 						<br>
-                        <a class="btn btn-primary" data-toggle="modal" data-target="#usuario"><i class="fa fa-fw -square -circle fa-plus-square"></i> Novo Usuario</a>
+                        <a class="btn btn-primary"><i class="fa fa-fw -square -circle fa-plus-square"></i> Novo Usuario</a>
+						<a class="btn btn-primary"><i class="fa fa-fw -square -circle fa-eye-slash"></i> Mostrar Invisiveis</a>
 						<br><br>
 					</div>
                     <div class="col-md-12">
@@ -71,7 +72,7 @@
 								$registo36 = mysql_fetch_array($resultado36);
 									echo "<tr id=\"tr{$registo35['id']}\">
 										<td>
-											<a href=\"#\"id=\"eye{$registo35['id']}\" onclick=\"visi({$registo35['id']})\"><i class=\"-alt fa fa-2x fa-eye fa-fw\"></i></a>
+											<a id=\"eye{$registo35['id']}\" onclick=\"visi({$registo35['id']})\"><i class=\"-alt fa fa-2x fa-eye fa-fw\"></i></a>
 										</td>
 										<td>
 											<h4>
@@ -95,7 +96,7 @@
 											<h4>
 												<b>{$registo35['nome']}</b>
 											</h4>
-											<a href=\"mailto:{$registo35['email']}\">{$registo35['email']}</a>
+											<a id=\"email{$registo35['id']}\" href=\"mailto:{$registo35['email']}\">{$registo35['email']}</a>
 										</td>
 										<td>{$registo35['since']}</td>
 										<td>
@@ -214,6 +215,9 @@
 
     </div>
     <!-- /#wrapper -->
+	
+	<!-- ALERTIFY -->
+    <script src="https://cdn.rawgit.com/alertifyjs/alertify.js/v1.0.10/dist/js/alertify.js"></script>
 
    <script src="admin/pages/assets/js/users.js"></script>
     <!-- jQuery -->
