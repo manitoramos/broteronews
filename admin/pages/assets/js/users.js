@@ -1,8 +1,6 @@
+//Meter a visao de informações de user invisivel para poder atualizar ao click
 document.getElementById("user_perm").style.display = "none";
-function probres()
-{
-	document.getElementById("user_perm").style.display = "none";
-}
+
 //Vista de configuração do utilizador com atualização de dados ao clicar
 function configurar(x)
 {
@@ -65,14 +63,17 @@ function desativar(x)
 				document.getElementById("des" + x).innerHTML = "<i class=\"fa fa-fw s fa-check\"></i>Ativar";
 				document.getElementById("des" + x).value = "ativar";
 				if(res[1] == "Error"){
-					alertify.delay(5000);
+					
+					//Alert para alertar que o email foi não enviado com Sucesso
+					alertify.delay(0);
 					alertify.closeLogOnClick(true);
 					alertify.logPosition("bottom right");
 					alertify.error("Erro ao mandar o E-mail para informar que a conta foi desativada");
 				}
-				else if(res[1] == "Success")
-				{
-					alertify.delay(5000);
+				else if(res[1] == "Success"){
+					
+					//Alert para alertar que o email foi enviado com Sucesso
+					alertify.delay(0);
 					alertify.closeLogOnClick(true);
 					alertify.logPosition("bottom right");
 					alertify.success("E-mail para informar o Desativar da Conta enviado com Sucesso");
@@ -83,6 +84,12 @@ function desativar(x)
 			{
 				document.getElementById("des" + x).innerHTML = "<i class=\"fa fa-fw s fa-remove\"></i>Desativar";
 				document.getElementById("des" + x).value = "desativar";
+				
+				//Alert para dizer que a conta foi ativada com Sucesso :: dura 5 segundos
+				alertify.delay(5000);
+				alertify.closeLogOnClick(true);
+				alertify.logPosition("bottom right");
+				alertify.success("Conta Reativada com Sucesso");
 				//document.getElementById("eye" + x).innerHTML = "<i class=\"-alt fa fa-2x fa-eye fa-fw\"></i>";
 			}
 			

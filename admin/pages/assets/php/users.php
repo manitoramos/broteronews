@@ -25,6 +25,8 @@
 			
 			$mensagem = "Sua Conta da BroteroNews foi Desativada consulte o suporte para mais informação.";
 			
+			$email = $_POST['email'];
+			
 			// formatação da mensagem em HTML
 			$mensagem = '<html>
 			<head><meta http-equiv="Content-Type" content="text/html; charset=utf-8" /></head>
@@ -33,8 +35,8 @@
 			</body>
 			</html>';
 
-			$result = mail('mtjmt2@hotmail.com','Conta Desativada',$mensagem,$headers);
-			
+			$result = mail($email,'Conta Desativada',$mensagem,$headers);
+			//Verifica se o e-mail foi enviado com Sucesso
 			if(!$result) {   
 				 echo "Error";   
 			} else {
@@ -47,8 +49,6 @@
 			$des = "UPDATE users SET estado=1 WHERE id='{$_POST['userid']}'";
 			$res = mysql_query($des,$LIGA);
 			echo "ativar";
-			
-			echo $_POST['email'];
 		}
 		
 		//echo $_POST['change'];
