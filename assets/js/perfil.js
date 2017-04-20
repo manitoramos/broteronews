@@ -99,6 +99,11 @@
 					alertify.closeLogOnClick(true);
 					alertify.logPosition("bottom right");
 					alertify.error("Insira uma Imagem , nao outra coisa!!");
+				}else if(data == "large"){
+					alertify.delay(0);
+					alertify.closeLogOnClick(true);
+					alertify.logPosition("bottom right");
+					alertify.error("Insira uma Imagem demasiado grande");
 				}else{
 					alertify.delay(0);
 					alertify.closeLogOnClick(true);

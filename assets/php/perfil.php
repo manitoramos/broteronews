@@ -16,6 +16,12 @@
 		}
 	}
 	
+	if ($_FILES["div1"]["size"] > 500000) {
+		echo "large";
+		$uploadOk = 0;
+		exit();
+	}
+	
 	//inser a imagem na pasta de imagens de perfil
 	if(is_array($_FILES)) {
 		if(is_uploaded_file($_FILES['div1']['tmp_name'])) {
