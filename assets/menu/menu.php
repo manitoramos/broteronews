@@ -1,84 +1,16 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
+
     <meta charset="utf-8">
     <!-- This file has been downloaded from Bootsnipp.com. Enjoy! -->
     <title>Mega menu slide down on hover with carousel - Bootsnipp.com</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet">
 	<link href="assets/css/login.css" rel="stylesheet">
-
-    <style type="text/css">
-        @import url(http://fonts.googleapis.com/css?family=Open+Sans:400,700);
-body {
-  font-family: 'Open Sans', 'sans-serif';
-}
-.mega-dropdown {
-  position: static !important;
-}
-.mega-dropdown-menu {
-    padding: 20px 0px;
-    width: 100%;
-    box-shadow: none;
-    -webkit-box-shadow: none;
-}
-.mega-dropdown-menu > li > ul {
-  padding: 0;
-  margin: 0;
-}
-.mega-dropdown-menu > li > ul > li {
-  list-style: none;
-}
-.mega-dropdown-menu > li > ul > li > a {
-  display: block;
-  color: #222;
-  padding: 3px 5px;
-}
-.mega-dropdown-menu > li ul > li > a:hover,
-.mega-dropdown-menu > li ul > li > a:focus {
-  text-decoration: none;
-}
-.mega-dropdown-menu .dropdown-header {
-  font-size: 18px;
-  color: #ff3546;
-  padding: 5px 60px 5px 5px;
-  line-height: 30px;
-}
-.navbar-content
-{
-    width:320px;
-    padding: 15px;
-    padding-bottom:0px;
-}
-.navbar-content:before, .navbar-content:after
-{
-    display: table;
-    content: "";
-    line-height: 0;
-}
-.navbar-nav.navbar-right:last-child {
-margin-right: 15px !important;
-}
-.navbar-footer 
-{
-    background-color:#DDD;
-}
-.navbar-footer-content { padding:15px 15px 15px 15px; }
-.dropdown-menu {
-	padding: 0px;
-	overflow: hidden;
-}
-.mannn{
-	padding: 20px 0px;
-}
-
-
-
-    </style>
-    <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+	<link href="assets/css/menu.css" rel="stylesheet">
+	
+    <script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
-</head>
-<body>
+	<script src="assets/js/menu.js"></script>
+	
 <div class="container">
   <nav class="navbar navbar-default navbar-fixed-top">
     <div class="navbar-header">
@@ -237,11 +169,12 @@ margin-right: 15px !important;
 			</li>
             <li><a href="ESAB">Sobre</a></li>
 		</ul>
+		<div id="menuimgalt">
         <ul class="nav navbar-nav navbar-right">
 		<?php if(!isset($_SESSION['user'])){ ?>
 		<!-- LOGINNNN -->
 			<li class="dropdown">
-			<a href="#" class="dropdown-toggle" data-toggle="dropdown"><b>Login</b> <span class="caret"></span></a>
+			<a href="#" id="droplog" class="dropdown-toggle" data-toggle="dropdown"><b>Login</b> <span class="caret"></span></a>
 				<ul id="login-dp" class="dropdown-menu">
 					<li>
 						<div class="row">
@@ -252,7 +185,7 @@ margin-right: 15px !important;
 									<a href="#" class="btn btn-tw"><i class="fa fa-twitter"></i> Twitter</a>
 								</div>
                                 or-->
-								 <form class="form" role="form" id="login" method="post" accept-charset="UTF-8" id="login-nav">
+								<form class="form-registo" role="form" id="login" method="post" accept-charset="UTF-8" id="login-nav">
 										<div class="form-group">
 											 <label class="sr-only" for="exampleInputEmail2">Email</label>
 											 <input type="email" class="form-control" name="email" id="exampleInputEmail2" placeholder="Email" required>
@@ -270,13 +203,51 @@ margin-right: 15px !important;
 											 <input type="checkbox"> Lembrar-se de mim
 											 </label>
 										</div>
-								 </form>
-							</div>
-							<div class="bottom text-center">
-								Novo Aqui ? <a href="#"><b>Regista-te</b></a>
+										<div class="bottom text-center">
+											Novo Aqui ? <a href="#"><b>Regista-te</b></a>
+										</div>
+								</form>						
+								<form role="form" id="registo" method="post" accept-charset="UTF-8" id="login-nav">
+										<div class="form-group">
+											 <label class="sr-only" for="exampleInputEmail2">Nome de Utilizador</label>
+											 <input type="text" class="form-control" name="user" id="exampleInputEmail2" placeholder="Nome de Utilizador" required>
+										</div>
+										<div class="form-group">
+											 <label class="sr-only" for="exampleInputEmail2">Nome Proprio</label>
+											 <input type="text" class="form-control" name="nome" id="exampleInputEmail2" placeholder="Primeiro e Ultimo Nome" required>
+										</div>
+										<div class="form-group">
+											 <label class="sr-only" for="exampleInputEmail2">Sexo</label>
+											 <select name="sexo" class="form-control" required>
+												<option value="" style="display:none;">Sexo</option>
+												<option value="femenino">Femenino</option>
+												<option value="masculino">Masculino</option>
+											</select>
+										</div>
+										<div class="form-group">
+											 <label class="sr-only" for="exampleInputEmail2">Email</label>
+											 <input type="email" class="form-control" name="email" id="exampleInputEmail2" placeholder="Email" required>
+											 <input type="text" class="form-control" name="reg" value="reg" id="" style="display:none;">
+										</div>
+										<div class="form-group">
+											 <label class="sr-only" for="exampleInputPassword2">Password</label>
+											 <input type="password" class="form-control" name="password" id="exampleInputPassword2" placeholder="Password" required>
+										</div>
+										<div class="form-group">
+											 <label class="sr-only" for="exampleInputPassword2">Data de Nascimento</label>
+											 <input type="text" class="form-control" name="date" id="exampleInputPassword2" placeholder="Nascimento ex: 25-05-1998" required>
+										</div>
+										<div class="form-group">
+											 <button type="submit" class="btn btn-primary btn-block">Registar</button>
+										</div>
+										<div class="bottom text-center">
+											Ja tens Conta? <a href="#"><b>Login</b></a>
+										</div>
+								</form>
+							
+								
 							</div>
 						</div>
-						
 					</li>
 				</ul>
 			</li>
@@ -344,6 +315,7 @@ margin-right: 15px !important;
             </li>
 		<?php }?>
         </ul>
+		</div>
 	</div><!-- /.nav-collapse -->
   </nav>
 </div>
@@ -368,65 +340,13 @@ margin-right: 15px !important;
       
     </div>
   </div>
+  
+  <script>
+	//mudar para o registar ou inverso
+	$('.bottom a').click(function(){
+		$('form').animate({height: "toggle", opacity: "toggle"}, "slow");
+	});
+  </script>
 
-<script>
-	$(document).ready(function (e) {
-	$("#login").on('submit',(function(e) {
-		e.preventDefault();
-		$.ajax({
-        	url: "./assets/php/entrar.php",
-			type: "POST",
-			data:  new FormData(this),
-			contentType: false,
-    	    cache: false,
-			processData:false,
-			success: function(data)
-		    {
-				if(data == "true"){
-					alertify.delay(0);
-					alertify.closeLogOnClick(true);
-					alertify.logPosition("bottom right");
-					alertify.success("Login com Sucesso sera redirecionado em breve!");
-					setTimeout(function () {
-					window.location.href = "home";
-					}, 2000);
-				}else if(data == "false"){
-					alertify.delay(2000);
-					alertify.closeLogOnClick(true);
-					alertify.logPosition("bottom right");
-					alertify.error("Password ou Username Errado!!");
-				}else{
-					alertify.delay(0);
-					alertify.closeLogOnClick(true);
-					alertify.logPosition("bottom right");
-					alertify.error("Algum Campo em Branco!!");
-				}
-		    },
-		  	error: function() 
-	    	{
-				alertify.delay(0);
-				alertify.closeLogOnClick(true);
-				alertify.logPosition("bottom right");
-				alertify.error("Erro! Não inseriste alguma coisa bem!");
-	    	} 	        
-	   });
-	}));
-});
-</script>
 
-<script type="text/javascript">
-$(document).ready(function(){
-    $(".cross").hover(            
-        function() {
-            $('.dropdown-menu', this).not('.in .dropdown-menu').stop(true,true).slideDown("400");
-            $(this).toggleClass('open');        
-        },
-        function() {
-            $('.dropdown-menu', this).not('.in .dropdown-menu').stop(true,true).slideUp("400");
-            $(this).toggleClass('open');       
-        }
-    );
-});
-</script>
-</body>
 </html>

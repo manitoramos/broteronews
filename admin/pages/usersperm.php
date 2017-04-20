@@ -160,7 +160,7 @@
 								<?php echo $registo39['nome']; ?>
 							</div>
 							<div class="profile-usertitle-job">
-								<?php echo $registo36['acesso'] ?>
+								<?php echo $registo40['acesso'] ?>
 							</div>
 						</div>
 						<!-- END SIDEBAR USER TITLE -->

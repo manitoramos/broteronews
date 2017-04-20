@@ -1,6 +1,10 @@
 <?php 
 
-			//email automatico para dizer que a conta foi desativada
+			$cript = sha1(sha1('grubbmanito'));
+			
+			echo $cript;
+
+			/*//email automatico para dizer que a conta foi desativada
 			$de = "broteronews@gmail.com";
 			$headers = "From: BroteroNews <".$de.">\n";
 			$headers .= "Content-Type: Text/HTML; charset=UTF-8\n";
@@ -21,5 +25,5 @@
 				 echo "Error";   
 			} else {
 				echo "Success";
-			}
+			}*/
 ?>

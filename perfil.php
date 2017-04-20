@@ -16,7 +16,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>BroteroNews</title>
+    <title>Perfil</title>
 
     <!-- Custom CSS -->
     <link href="css/heroic-features.css" rel="stylesheet">
@@ -34,124 +34,7 @@
     <![endif]-->
     <link rel="shortcut icon" href="bootstrap-solid.ico">
 	
-	<script>
-	$(document).ready(function() {
-    var panels = $('.user-infos');
-    var panelsButton = $('.dropdown-user');
-    panels.hide();
-
-    //Click dropdown
-    panelsButton.click(function() {
-        //get data-for attribute
-        var dataFor = $(this).attr('data-for');
-        var idFor = $(dataFor);
-
-        //current button
-        var currentButton = $(this);
-        idFor.slideToggle(400, function() {
-            //Completed slidetoggle
-            if(idFor.is(':visible'))
-            {
-                currentButton.html('<i class="glyphicon glyphicon-chevron-up text-muted"></i>');
-            }
-            else
-            {
-                currentButton.html('<i class="glyphicon glyphicon-chevron-down text-muted"></i>');
-            }
-        })
-    });
-
-
-    $('[data-toggle="tooltip"]').tooltip();
-
-    $('button').click(function(e) {
-        e.preventDefault();
-        alert("This is a demo.\n :-)");
-    });
-});
-
-
-	function hey(){
-		alertify
-		  .defaultValue("Escreve a Antiga Password")
-		  .prompt("Mudar Password",
-			function (val, ev) {
-
-			  // The click event is in the event variable, so you can use it here.
-			  ev.preventDefault();
-
-				alertify
-				  .defaultValue("Escreve a Nova Password")
-				  .prompt("Mudar Password",
-					function (val2, ev) {
-
-					  // The click event is in the event variable, so you can use it here.
-					  ev.preventDefault();
-
-					  // The value entered is availble in the val variable.
-					  alertify.success("Antiga: " + val + " Nova: " + val2);
-
-					}, function(ev) {
-
-					  // The click event is in the event variable, so you can use it here.
-					  ev.preventDefault();
-
-					  alertify.error("Cancelas-te a operação");
-
-					}
-				  );
-
-			}, function(ev) {
-
-			  // The click event is in the event variable, so you can use it here.
-			  ev.preventDefault();
-
-			  alertify.error("Cancelas-te a operação");
-
-			}
-		  );
-		  
-	}
-	
-	</script>
-	
-	
-	<style>
-	.user-row {
-    margin-bottom: 14px;
-}
-
-.user-row:last-child {
-    margin-bottom: 0;
-}
-
-.dropdown-user {
-    margin: 13px 0;
-    padding: 5px;
-    height: 100%;
-}
-
-.dropdown-user:hover {
-    cursor: pointer;
-}
-
-.table-user-information > tbody > tr {
-    border-top: 1px solid rgb(221, 221, 221);
-}
-
-.table-user-information > tbody > tr:first-child {
-    border-top: 0;
-}
-
-
-.table-user-information > tbody > tr > td {
-    border-top: 0;
-}
-.toppad
-{margin-top:20px;
-}
-
-	</style>
+	<link href="assets/css/perfil.css" rel="stylesheet" type="text/css">
 
   </head>
   <body>
@@ -193,24 +76,27 @@
             </div>
             <div class="panel-body">
               <div class="row">
-                <div class="col-md-3 col-lg-3 " align="center"> 
-					<img alt="User Pic" src="<?php if($registo8['img'] == ""){ echo "assets/img-perfil/default.jpg"; }else{ echo $registo8['img'];} ?>" class="img-circle img-responsive"> 
-					<!--<a href="#"><font size="4"><i style="top: -200px; left: -80px;" class="glyphicon glyphicon-edit"></i></font></a>-->
-					<a href="#">Alterar Foto</a>
+                <div class="col-md-3 col-lg-3 " align="center">
+					<div id="altimg">
+					<?php
+						$SQL9 = "SELECT * FROM users where user='{$_SESSION['user']}'";
+						$resultado9 = mysql_query($SQL9,$LIGA);
+						$registo9 = mysql_fetch_array($resultado9);
+						
+						if(isset($_SESSION['img']))
+						{
+							unlink($_SESSION['img']);
+							unset($_SESSION['img']);
+						}
+					?>
+						<img alt="User Pic" src="<?php if($registo9['img'] == ""){ echo "assets/img-perfil/default.jpg"; }else{ echo $registo9['img'];} ?>" class="img-circle img-responsive"> 
+						<!--<a href="#"><font size="4"><i style="top: -200px; left: -80px;" class="glyphicon glyphicon-edit"></i></font></a>-->
+					</div>
+					<form role="form" method="post" accept-charset="UTF-8" id="alterarfoto" enctype="multipart/form-data">
+						<label class="labul" id="div2" for='div1'>Alterar Foto</label>
+						<input type="file" id="div1" name="div1" style="display:none;"></input>
+					</form>
 				</div>
-                
-                <!--<div class="col-xs-10 col-sm-10 hidden-md hidden-lg"> <br>
-                  <dl>
-                    <dt>DEPARTMENT:</dt>
-                    <dd>Administrator</dd>
-                    <dt>HIRE DATE</dt>
-                    <dd>11/12/2013</dd>
-                    <dt>DATE OF BIRTH</dt>
-                       <dd>11/12/2013</dd>
-                    <dt>GENDER</dt>
-                    <dd>Male</dd>
-                  </dl>
-                </div>-->
                 <div class=" col-md-9 col-lg-9 "> 
                   <table class="table table-user-information">
                     <tbody>
@@ -263,10 +149,7 @@
                       </tr>
                     </tbody>
                   </table>
-                  <!--
-                  <a href="#" class="btn btn-default">Mudar Password</a>
-                  <a href="#" class="btn btn-primary">Team Sales Performance</a>
-				  -->
+				  
                 </div>
               </div>
             </div>
@@ -274,7 +157,7 @@
                         <a data-original-title="Broadcast Message" data-toggle="tooltip" type="button" class="btn btn-sm btn-primary"><i class="glyphicon glyphicon-envelope"></i></a>
                         <span class="pull-right">
 						<?php
-						
+							//permisão admin
 							if($registo3['previlegios'] == '3')
 							{
 								echo "<a href=\"Admin@home\" class=\"btn btn-warning btn-sm\">Admin</a>";
@@ -291,12 +174,23 @@
       </div>
     </div>
 	<br>
+	
+	
+	<script>
+		$(document).ready(function(){
+			$(".fotoo a").click(function(){
+				$("#div2").toggle("slow");
+			});
+		});
+	</script>
+	
+	<script src="assets/js/perfil.js"></script>
 
-					<!-- standard version -->
-					<script src="https://cdn.rawgit.com/alertifyjs/alertify.js/v1.0.10/dist/js/alertify.js"></script>
+	<!-- standard version -->
+	<script src="https://cdn.rawgit.com/alertifyjs/alertify.js/v1.0.10/dist/js/alertify.js"></script>
 
-					<!-- angular module -->
-					<script src="https://cdn.rawgit.com/alertifyjs/alertify.js/v1.0.10/dist/js/ngAlertify.js"></script>
+	<!-- angular module -->
+	<script src="https://cdn.rawgit.com/alertifyjs/alertify.js/v1.0.10/dist/js/ngAlertify.js"></script>
 
     <?php include("assets/footer.php"); ?>
 
