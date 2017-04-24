@@ -56,7 +56,7 @@
 						<br><br>
 					</div>
                     <div class="col-md-12">
-                        <table class="table table-hover table-striped">
+                        <table id="labet" class="table table-hover table-striped">
                             <tbody>
 							<?php
 								//selecionar todos os utilizadores
@@ -75,9 +75,9 @@
 											<a id=\"eye{$registo35['id']}\" onclick=\"visi({$registo35['id']})\"><i class=\"-alt fa fa-2x fa-eye fa-fw\"></i></a>
 										</td>
 										<td>
-											<h4>
+											<h5>
 												<b>{$registo36['acesso']}</b>
-											</h4>
+											</h5>
 											<p>@{$registo35['user']}</p>
 										</td>
 										<td>";
@@ -215,6 +215,37 @@
 
     </div>
     <!-- /#wrapper -->
+	
+	<script>
+		function searchtr() {
+		  // Declare variables 
+		  var input, filter, table, tr, td, i, p;
+		  input = document.getElementById("searchgod");
+		  filter = input.value.toUpperCase();
+		  table = document.getElementById("labet");
+		  tr = table.getElementsByTagName("tr");
+
+		  // Loop through all table rows, and hide those who don't match the search query
+		  for (i = 0; i < tr.length; i++) {
+			td = tr[i].getElementsByTagName("h4")[0];
+			p = tr[i].getElementsByTagName("p")[0];
+			if (td) {
+			  if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
+				tr[i].style.display = "";
+			  } else {
+				tr[i].style.display = "none";
+			  }
+			}/*
+			if (p) {
+			  if (p.innerHTML.toUpperCase().indexOf(filter) > -1) {
+				tr[i].style.display = "";
+			  } else {
+				tr[i].style.display = "none";
+			  }
+			}*/
+		  }
+		}	
+	</script>
 	
 	<!-- ALERTIFY -->
     <script src="https://cdn.rawgit.com/alertifyjs/alertify.js/v1.0.10/dist/js/alertify.js"></script>

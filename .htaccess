@@ -10,12 +10,14 @@ RewriteRule ^login/?$ login.php
 RewriteRule ^ESAB/?$ sobre.php
 RewriteRule ^sair@(.*) assets/php/entrar.php?acao=$1 [L]
 RewriteRule ^noticia@(.*) noticia.php?not=$1 [L]
-RewriteRule ^Admin@home/?$ admin/pages/index2.php [L]
-RewriteRule ^Admin@comentarios/?$ admin/pages/comentarios.php [L]
-RewriteRule ^Admin@nova_noticia/?$ admin/pages/noticia.php [L]
-RewriteRule ^Admin@coment/(.*)/(.*) admin/pages/assets/php/coment.php?sku=$1&info=$2 [L]
-RewriteRule ^Admin@users/?$ admin/pages/usersperm.php [L]
-RewriteRule ^Admin@users2/?$ admin/pages/usersperm2.php [L]
+RewriteRule ^(.*)@home/?$ admin/pages/index2.php [L]
+RewriteRule ^(.*)@comentarios/?$ admin/pages/comentarios.php [L]
+RewriteRule ^(.*)@nova_noticia/?$ admin/pages/noticia.php [L]
+RewriteRule ^(.*)@coment/(.*)/(.*) admin/pages/assets/php/coment.php?sku=$1&info=$2 [L]
+RewriteRule ^(.*)@users/?$ admin/pages/usersperm.php [L]
+RewriteRule ^(.*)@users2/?$ admin/pages/usersperm2.php [L]
+RewriteRule ^(.*)@noticias/?$ admin/pages/vernoticias.php [L]
 RewriteRule ^perfil/?$ perfil.php
+
 
 

@@ -33,6 +33,9 @@
 						while($reges1 = mysql_fetch_array($result1)){
 							echo "<li>";
                             echo "<a href=\"#\">";
+							echo "<div class=\"pull-left\" style=\"position:relative; right:7px; top:5px;\">";
+							echo "<img src=\"{$reges1['imagem']}\" width=\"30px\" height=\"30px\">";
+							echo "</div>";
                                 echo "<div>";
                                     echo "<strong>{$reges1['autor']}</strong>";
                                     echo "<span class=\"pull-right text-muted\">";
@@ -50,8 +53,8 @@
 					
 					?>
                         <li>
-                            <a class="text-center" href="#">
-                                <strong>Ler Todas as Mensagens</strong>
+                            <a class="text-center" href="Admin@noticias">
+                                <strong>Mostrar Todas as Notícias</strong>
                                 <i class="fa fa-angle-right"></i>
                             </a>
                         </li>
@@ -230,8 +233,14 @@
                 <div class="sidebar-nav navbar-collapse">
                     <ul class="nav" id="side-menu">
                         <li class="sidebar-search">
+							<select class="form-control" style="display:none;">
+								<option>ei</option>
+								<option>hey</option>
+								<select>
                             <div class="input-group custom-search-form">
-                                <input type="text" class="form-control" placeholder="Search...">
+							
+								
+                                <input id="searchgod" type="text" onkeyup="searchtr()" class="form-control" placeholder="Search...">
                                 <span class="input-group-btn">
                                     <button class="btn btn-default" type="button">
                                         <i class="fa fa-search"></i>
