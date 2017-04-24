@@ -91,42 +91,13 @@
 													/*echo "<button class=\"btn btn-default\" id=\"des{$registo35['id']}\" onclick=\"desativar({$registo35['id']})\" value=\"ativar\" type=\"button\">
 														  <i class=\"fa fa-fw s fa-check\"></i>Ativar</button>";*/
 												echo "
-												<button id=\"conf{$registo35['id']}\" class=\"btn btn-default dropdown-toggle\" value=\"{$registo35['id']}\" type=\"button\" data-toggle=\"dropdown\">
+												<button id=\"conf{$registo35['id']}\" class=\"btn btn-default\" value=\"{$registo35['id']}\" type=\"button\">
 													<i class=\"fa fa-fw fa-cog\"></i></button>
-													<ul class=\"dropdown-menu slidedown\">
-													<li>
-														<a href=\"#\">
-															<i class=\"fa fa-refresh fa-fw\"></i> Refresh
-														</a>
-													</li>
-													<li>
-														<a href=\"#\">
-															<i class=\"fa fa-check-circle fa-fw\"></i> Available
-														</a>
-													</li>
-													<li>
-														<a href=\"#\">
-															<i class=\"fa fa-times fa-fw\"></i> Busy
-														</a>
-													</li>
-													<li>
-														<a href=\"#\">
-															<i class=\"fa fa-clock-o fa-fw\"></i> Away
-														</a>
-													</li>
-													<li class=\"divider\"></li>
-													<li>
-														<a href=\"#\">
-															<i class=\"fa fa-sign-out fa-fw\"></i> Sign Out
-														</a>
-													</li>
-												</ul>
-															</div>
-														</td>
-													</tr>";
+											</div>
+										</td>
+									</tr>";
 								}
 							?>
-							
                             </tbody>
                         </table>
                     </div>
