@@ -28,6 +28,7 @@
     <!-- Custom Fonts -->
     <link href="admin/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 		<link href="admin/pages/assets/css/usersperm.css" rel="stylesheet">
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/balloon-css/0.4.0/balloon.min.css">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -160,47 +161,101 @@
 								<?php echo $registo39['nome']; ?>
 							</div>
 							<div class="profile-usertitle-job">
-								<?php echo $registo40['acesso'] ?>
+								<?php echo "<span style=\"color:{$registo40['color']};\">{$registo40['l_acesso']}</span>"; ?>
 							</div>
 						</div>
 						<!-- END SIDEBAR USER TITLE -->
 						<!-- SIDEBAR BUTTONS -->
 						<div class="profile-userbuttons">
 							<button type="button" class="btn btn-danger btn-sm">Desativar</button>
-							<button type="button" class="btn btn-primary btn-sm"><i class="fa fa-fw fa-envelope"></i></button>
+							<a type="button" class="btn btn-primary btn-sm" <?php echo "href=\"mailto:{$registo39['email']}\""; ?>><i class="fa fa-fw fa-envelope"></i></a>
 						</div>
 						<!-- END SIDEBAR BUTTONS -->
 						<!-- SIDEBAR MENU -->
 						<div class="profile-usermenu">
 							<ul class="nav">
-								<li class="active">
-									<a href="#">
+								<li id="li_g" class="active">
+									<a href="#" onclick="vista_g()">
 									<i class="glyphicon glyphicon-home"></i>
-									Overview </a>
-								</li>
-								<li>
-									<a href="#">
+									Vista Geral </a>
+								</li><!--
+								<li id="li_s">
+									<a href="#" onclick="vista_s()">
 									<i class="glyphicon glyphicon-user"></i>
 									Account Settings </a>
-								</li>
-								<li>
-									<a href="#">
+								</li>-->
+								<li id="li_c">
+									<a href="#" onclick="vista_c()">
 									<i class="glyphicon glyphicon-comment"></i>
 									Comentarios </a>
 								</li>
 								<li>
 									<a href="#" onclick="escolher_user()">
 									<i class="fa fa-chevron-left"></i>
-									Back </a>
+									Voltar </a>
 								</li>
 							</ul>
 						</div>
 						<!-- END MENU -->
 					</div>
 				</div>
-				<div class="col-md-9">
+				<div id="v_geral" class="col-md-9">
 					<div class="profile-content">
-					   Some user related content goes here...
+					<center><h2>Informações do Utilizador</h2></center>
+					<br>
+					   <table class="table table-user-information">
+                    <tbody>
+					  <tr>
+                        <td><b>Nome Proprio:</b></td>
+                        <td><?php echo $registo39['nome']; ?></td>
+                      </tr>
+					  <tr>
+                        <td><b>Utilizador:</b></td>
+                        <td><?php echo $registo39['user']; ?></td>
+                      </tr>
+                      <tr>
+                        <td><b>Acessos:</b></td>
+						<?php 
+							echo "<td style=\"color:{$registo40['color']};\">{$registo40['l_acesso']}</td>";
+						?>
+                      </tr>
+                      <tr>
+                        <td><b>Membro desde</b></td>
+                        <td><?php $newdate = date("d/m/Y", strtotime($registo39["since"])); echo $newdate; ?></td>
+                      </tr>
+                      <tr>
+                        <td><b>Data de Nascimento</b></td>
+                        <td><?php $newdate2 = date("d/m/Y", strtotime($registo39["nascimento"])); echo $newdate2; ?></td>
+                      </tr>
+                       <tr>
+                        <td><b>Sexo</b></td>
+                        <td><?php echo $registo39['sexo'];?></td>
+                      </tr>
+					  <tr>
+                        <td><b>Password</b></td>
+                        <td>
+							<?php echo "************";?>
+							<button data-balloon-length="large" data-balloon="Ao clicares no butao uma senha sera gerada aleatoria e sera enviada para o email do utilizador" data-balloon-pos="up" class="btn btn-default btn-xs">Gerar senha</button>
+						</td>
+                      </tr>
+                      <tr>
+                        <td><b>Email</b></td>
+                        <td><a href="mailto:<?php echo "{$registo39['email']}"; ?>"><?php {echo $registo39['email'];} ?></a></td>
+                      </tr>
+                    </tbody>
+                  </table>
+					</div>
+				</div>
+				<!-- DIV CONFIG 
+				<div id="v_conf" class="col-md-9">
+					<div class="profile-content">
+					   nothing for now mas vai ter
+					</div>
+				</div>-->
+				<!-- DIV COMENTS -->
+				<div id="v_coment" class="col-md-9">
+					<div class="profile-content">
+					   nothing for now mas vai ter
 					</div>
 				</div>
 			</div>

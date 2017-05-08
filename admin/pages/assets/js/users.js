@@ -20,6 +20,8 @@ function configurar(x)
 			$( "#user_perm" ).load( "admin/pages/usersperm.php #user_perm", function() {
 				document.getElementById("esc_user").style.display = "none";
 				$("#user_perm").fadeIn("slow");
+				document.getElementById("v_coment").style.display = "none";
+				//document.getElementById("v_conf").style.display = "none";
 			});
 			
 			//console.log(http.responseText);
@@ -107,5 +109,44 @@ function visi(x)
 {
 	
 	$("#tr" + x).fadeOut();
+	
+}
+
+//mudar para a vista geral nas configurações do utilizador
+function vista_g()
+{
+	
+	//document.getElementById("v_conf").style.display = "none";
+	document.getElementById("v_geral").style.display = "";
+	document.getElementById("v_coment").style.display = "none";
+	$("#li_g").addClass("active");
+	$("#li_c").removeClass("active");
+	//$("#li_s").removeClass("active");
+	
+}
+
+//Comentarios
+function vista_c()
+{
+	
+	document.getElementById("v_geral").style.display = "none";
+	document.getElementById("v_coment").style.display = "";
+	//document.getElementById("v_conf").style.display = "none";
+	$("#li_c").addClass("active");
+	$("#li_g").removeClass("active");
+	//$("#li_s").removeClass("active");
+	
+}
+
+//CONFIGURAÇÕES DA CONTA
+function vista_s()
+{
+	
+	document.getElementById("v_geral").style.display = "none";
+	document.getElementById("v_coment").style.display = "none";
+	//document.getElementById("v_conf").style.display = "";
+	$("#li_c").removeClass("active");
+	$("#li_g").removeClass("active");
+	//$("#li_s").addClass("active");
 	
 }
