@@ -48,8 +48,6 @@
 		
 		$SQL1 = "SELECT * FROM users where email='{$_POST['email']}' AND password='{$cript}'";
 		$resultado1 = mysql_query($SQL1,$LIGA);
-		//Para saber quantas noticas estao antes de inserir
-		
 		$registo1 = mysql_fetch_array($resultado1);
 		
 		if($registo1 == "")

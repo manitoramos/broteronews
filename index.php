@@ -289,15 +289,12 @@
 						  modal.find('.modal-body input').val(recipient)
 						})
 
-						var notification = alertify.notify('sample', 'success', 5, function(){  console.log('dismissed'); });
+						//var notification = alertify.notify('sample', 'success', 5, function(){  console.log('dismissed'); });
 
 					</script>
 
 					<!-- standard version -->
 					<script src="https://cdn.rawgit.com/alertifyjs/alertify.js/v1.0.10/dist/js/alertify.js"></script>
-
-					<!-- angular module -->
-					<script src="https://cdn.rawgit.com/alertifyjs/alertify.js/v1.0.10/dist/js/ngAlertify.js"></script>
 
 					<!-- FIM MODAL-->
 				</p>

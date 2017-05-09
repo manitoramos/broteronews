@@ -153,7 +153,8 @@ function vista_s()
 
 
 //editable no Utilizador
-function edituser(){
+function edituser()
+{
 	
 	$(document).ready(function() {
 		$.fn.editable.defaults.mode = 'inline';
@@ -170,7 +171,8 @@ function edituser(){
 }
 
 //editable no Nome Proprio
-function editnopp(){
+function editnopp()
+{
 	
 	$(document).ready(function() {
 		$.fn.editable.defaults.mode = 'inline';
@@ -184,4 +186,29 @@ function editnopp(){
 			}
 		});
 	});
+}
+
+//gerar senha automatica para usuario
+function gerar_s()
+{
+	
+	var http = new XMLHttpRequest();
+	
+	var parametros = "gerarsenha=true";
+	
+	http.open("POST", "admin/pages/assets/php/gerarsenha.php", true);
+	
+	http.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+	//http.setRequestHeader("Content-length", parametros.length);
+	//http.setRequestHeader("Connection", "close");
+
+	http.onreadystatechange = function() {
+		if(http.readyState == 4 && http.status == 200) {
+			
+			console.log(http.responseText);
+			
+		}
+	}
+	http.send(parametros);
+	
 }

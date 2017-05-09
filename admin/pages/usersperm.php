@@ -249,7 +249,7 @@
                         <td><b>Password</b></td>
                         <td>
 							<?php echo "************";?>
-							<button data-balloon-length="large" data-balloon="Ao clicares no butao uma senha sera gerada aleatoria e sera enviada para o email do utilizador" data-balloon-pos="up" class="btn btn-default btn-xs">Gerar senha</button>
+							<button data-balloon-length="large" data-balloon="Ao clicares no butao uma senha sera gerada aleatoria e sera enviada para o email do utilizador" data-balloon-pos="up" class="btn btn-default btn-xs" onclick="gerar_s()">Gerar senha</button>
 						</td>
                       </tr>
                       <tr>
