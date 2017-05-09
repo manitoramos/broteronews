@@ -87,9 +87,9 @@
 										</td>
 										<td>
 											<h5>
-												<b>{$registo36['acesso']}</b>
+												<b><span id=\"ac3_{$registo35['id']}\">{$registo36['acesso']}</span></b>
 											</h5>
-											<p>@{$registo35['user']}</p>
+											<p>@<span id=\"ut2_{$registo35['id']}\">{$registo35['user']}</span></p>
 										</td>
 										<td>";
 											if($registo35['img'] == "")
@@ -105,7 +105,7 @@
 										</td>
 										<td>
 											<h4>
-												<b>{$registo35['nome']}</b>
+												<b><span id=\"np3_{$registo35['id']}\">{$registo35['nome']}</span></b>
 											</h4>
 											<a id=\"email{$registo35['id']}\" href=\"mailto:{$registo35['email']}\">{$registo35['email']}</a>
 										</td>
@@ -170,12 +170,26 @@
 						</div>
 						<!-- END SIDEBAR USERPIC -->
 						<!-- SIDEBAR USER TITLE -->
-						<div class="profile-usertitle">
+						<div id="profileuss" class="profile-usertitle">
+							<?php
+							
+								$SQL39 = "SELECT * FROM users Where id='{$_SESSION['usid']}'";
+								$resultado39 = mysql_query($SQL39,$LIGA);
+								$registo39 = mysql_fetch_array($resultado39);
+
+								$SQL40 = "SELECT * FROM acesso WHERE id='{$registo39['previlegios']}'";
+								$resultado40 = mysql_query($SQL40,$LIGA);
+								$registo40 = mysql_fetch_array($resultado40);
+							
+							?>
 							<div class="profile-usertitle-name">
-								<?php echo $registo39['nome']; ?>
+								<?php echo "<span id=\"np2_{$_SESSION['usid']}\">{$registo39['nome']}</span>"; ?>
+							</div>
+							<div style="display:none;">
+								<?php echo "<span id=\"ut4_{$_SESSION['usid']}\">{$registo39['user']}</span>"; ?>
 							</div>
 							<div class="profile-usertitle-job">
-								<?php echo "<span style=\"color:{$registo40['color']};\">{$registo40['l_acesso']}</span>"; ?>
+								<?php echo "<span id=\"ac2_{$_SESSION['usid']}\" style=\"color:{$registo40['color']};\">{$registo40['l_acesso']}</span>"; ?>
 							</div>
 						</div>
 						<!-- END SIDEBAR USER TITLE -->
@@ -221,16 +235,16 @@
                     <tbody>
 					  <tr>
                         <td><b>Nome Proprio:</b></td>
-                        <td><?php echo "<span onclick=\"editnopp()\" id=\"noom_p\">{$registo39['nome']}</span>"; ?></td>
+                        <td><?php echo "<span onclick=\"editnopp({$_SESSION['usid']})\" id=\"noom_p\">{$registo39['nome']}</span>"; ?></td>
                       </tr>
 					  <tr>
                         <td><b>Utilizador:</b></td>
-                        <td><?php echo "<span onclick=\"edituser()\" id=\"usee_id\">{$registo39['user']}</span>"; ?></td>
+                        <td><?php echo "<span onclick=\"edituser({$_SESSION['usid']})\" id=\"usee_id\">{$registo39['user']}</span>"; ?></td>
                       </tr>
                       <tr>
                         <td><b>Acessos:</b></td>
 						<?php 
-							echo "<td style=\"color:{$registo40['color']};\">{$registo40['l_acesso']}</td>";
+							echo "<td id=\"ac1_{$_SESSION['usid']}\" style=\"color:{$registo40['color']};\"><span onclick=\"editprev({$_SESSION['usid']})\" data-pk=\"{$_SESSION['usid']}\" data-value=\"{$registo40['id']}\" id=\"prev_ed\">{$registo40['l_acesso']}</span></td>";
 						?>
                       </tr>
                       <tr>

@@ -153,39 +153,138 @@ function vista_s()
 
 
 //editable no Utilizador
-function edituser()
+function edituser(x)
 {
+	
+	var editt = "edituser";
 	
 	$(document).ready(function() {
 		$.fn.editable.defaults.mode = 'inline';
-		$.fn.editable.defaults.onblur = 'submit';
 		$('#usee_id').editable({
 			type: 'text',
-			//pk: ,
-			//url: 'assets/php/editnote.php',
+			pk: x,
+			params:{editt},
+			url: 'admin/pages/assets/php/usersedit.php',
 			success: function(data) {
-				
+				if(data == "true")
+				{
+					alertify.delay(0);
+					alertify.closeLogOnClick(true);
+					alertify.logPosition("bottom right");
+					alertify.success("Utilizador modificado com sucesso");
+					$( "#profileuss" ).load( "admin/pages/usersperm.php #profileuss", function() {
+						document.getElementById("ut2_"+x).innerHTML = document.getElementById("ut4_"+x).innerHTML;
+					});
+				}
+				else
+				{
+					alertify.delay(0);
+					alertify.closeLogOnClick(true);
+					alertify.logPosition("bottom right");
+					alertify.error("Erro!! Ao tentar modificar");
+				}
 			}
 		});
 	});
 }
 
 //editable no Nome Proprio
-function editnopp()
+function editnopp(x)
 {
+	
+	var editt = "editnomp";
 	
 	$(document).ready(function() {
 		$.fn.editable.defaults.mode = 'inline';
-		$.fn.editable.defaults.onblur = 'submit';
 		$('#noom_p').editable({
 			type: 'text',
-			//pk: ,
-			//url: 'assets/php/editnote.php',
+			pk: x,
+			params:{editt},
+			url: 'admin/pages/assets/php/usersedit.php',
 			success: function(data) {
-				
+				if(data == "true")
+				{
+					alertify.delay(0);
+					alertify.closeLogOnClick(true);
+					alertify.logPosition("bottom right");
+					alertify.success("Nome Proprio modificado com sucesso");
+					$( "#profileuss" ).load( "admin/pages/usersperm.php #profileuss", function() {
+						document.getElementById("np3_"+x).innerHTML = document.getElementById("np2_"+x).innerHTML;
+					});
+				}
+				else
+				{
+					alertify.delay(0);
+					alertify.closeLogOnClick(true);
+					alertify.logPosition("bottom right");
+					alertify.error("Erro!! Ao tentar modificar");
+				}
 			}
 		});
 	});
+}
+
+//editable nos Previlegios(Acesso)
+function editprev(idd)
+{
+	var http = new XMLHttpRequest();
+	
+	var parametros = "editvalss=true";
+	
+	http.open("POST", "admin/pages/assets/php/usersedit.php", true);
+	
+	http.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+	//http.setRequestHeader("Content-length", parametros.length);
+	//http.setRequestHeader("Connection", "close");
+
+	http.onreadystatechange = function() {
+		if(http.readyState == 4 && http.status == 200) {
+			
+				var tropas = [];
+				var meke = http.responseText;
+
+				meke = meke.replace(/"/g, '');
+				var str = meke;
+				var res = str.split(",");
+				for (i = 0; i < res.length; i++) {
+					var str_2 = res[i];
+					var res_2 = str_2.split(":");
+					tropas.push({value: res_2[0], text: res_2[1]});
+				}
+				var editt = "editaces";
+				
+				$.fn.editable.defaults.mode = 'inline';
+				$('#prev_ed').editable({
+					type: 'select',
+					source: tropas,
+					params:{editt},
+					url: 'admin/pages/assets/php/usersedit.php',
+					success: function(data) {
+						if(data == "true")
+						{
+							alertify.delay(0);
+							alertify.closeLogOnClick(true);
+							alertify.logPosition("bottom right");
+							alertify.success("Acesso do Utilizador alterado com Sucesso");
+							$( "#profileuss" ).load( "admin/pages/usersperm.php #profileuss", function() {
+								document.getElementById("ac3_"+idd).innerHTML = document.getElementById("ac2_"+idd).innerHTML;
+								document.getElementById("ac1_"+idd).style.color = document.getElementById("ac2_"+idd).style.color;
+							});
+						}
+						else
+						{
+							alertify.delay(0);
+							alertify.closeLogOnClick(true);
+							alertify.logPosition("bottom right");
+							alertify.error("Erro!! Ao tentar modificar");
+							console.log(data);
+						}
+					}
+				});
+				//console.log(http.responseText);
+		}
+	}
+	http.send(parametros);
 }
 
 //gerar senha automatica para usuario
