@@ -150,3 +150,38 @@ function vista_s()
 	//$("#li_s").addClass("active");
 	
 }
+
+
+//editable no Utilizador
+function edituser(){
+	
+	$(document).ready(function() {
+		$.fn.editable.defaults.mode = 'inline';
+		$.fn.editable.defaults.onblur = 'submit';
+		$('#usee_id').editable({
+			type: 'text',
+			//pk: ,
+			//url: 'assets/php/editnote.php',
+			success: function(data) {
+				
+			}
+		});
+	});
+}
+
+//editable no Nome Proprio
+function editnopp(){
+	
+	$(document).ready(function() {
+		$.fn.editable.defaults.mode = 'inline';
+		$.fn.editable.defaults.onblur = 'submit';
+		$('#noom_p').editable({
+			type: 'text',
+			//pk: ,
+			//url: 'assets/php/editnote.php',
+			success: function(data) {
+				
+			}
+		});
+	});
+}

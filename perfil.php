@@ -132,7 +132,7 @@
                         <td><?php $newdate2 = date("d/m/Y", strtotime($registo8["nascimento"])); echo $newdate2; ?></td>
                       </tr>
                        <tr>
-                        <td>Sexo</td>
+                        <td>Género</td>
                         <td><?php echo $registo8['sexo'];?></td>
                       </tr>
 					  <tr>

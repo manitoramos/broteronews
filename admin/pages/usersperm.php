@@ -16,8 +16,16 @@
 	
 	<link rel="shortcut icon" href="bootstrap-solid.ico">
 
+	
+	 <script src="admin/vendor/jquery/jquery.min.js"></script>
     <!-- Bootstrap Core CSS -->
     <link href="admin/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+	 <!-- Bootstrap Core JavaScript -->
+    <script src="admin/vendor/bootstrap/js/bootstrap.min.js"></script>
+	
+	<!--x editable -->
+	<link href="admin/vendor/x-editable/css/bootstrap-editable.css" rel="stylesheet"/>
+	<script src="admin/vendor/x-editable/js/bootstrap-editable.min.js"></script>
 
     <!-- MetisMenu CSS -->
     <link href="admin/vendor/metisMenu/metisMenu.min.css" rel="stylesheet">
@@ -27,8 +35,10 @@
 
     <!-- Custom Fonts -->
     <link href="admin/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-		<link href="admin/pages/assets/css/usersperm.css" rel="stylesheet">
-		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/balloon-css/0.4.0/balloon.min.css">
+	<link href="admin/pages/assets/css/usersperm.css" rel="stylesheet">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/balloon-css/0.4.0/balloon.min.css">
+		
+	
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -138,6 +148,10 @@
 								$SQL40 = "SELECT * FROM acesso WHERE id='{$registo39['previlegios']}'";
 								$resultado40 = mysql_query($SQL40,$LIGA);
 								$registo40 = mysql_fetch_array($resultado40);
+								
+								$SQL41 = "SELECT * FROM comentarios WHERE user=\"{$registo39['user']}\"";
+								$resultado41 = mysql_query($SQL41,$LIGA);//para verificar se existe algum comentario
+								$resultado42 = mysql_query($SQL41,$LIGA);//para listar todos os comentarios do user
 				?>
 					<div class="profile-sidebar">
 						<!-- SIDEBAR USERPIC -->
@@ -207,11 +221,11 @@
                     <tbody>
 					  <tr>
                         <td><b>Nome Proprio:</b></td>
-                        <td><?php echo $registo39['nome']; ?></td>
+                        <td><?php echo "<span onclick=\"editnopp()\" id=\"noom_p\">{$registo39['nome']}</span>"; ?></td>
                       </tr>
 					  <tr>
                         <td><b>Utilizador:</b></td>
-                        <td><?php echo $registo39['user']; ?></td>
+                        <td><?php echo "<span onclick=\"edituser()\" id=\"usee_id\">{$registo39['user']}</span>"; ?></td>
                       </tr>
                       <tr>
                         <td><b>Acessos:</b></td>
@@ -228,7 +242,7 @@
                         <td><?php $newdate2 = date("d/m/Y", strtotime($registo39["nascimento"])); echo $newdate2; ?></td>
                       </tr>
                        <tr>
-                        <td><b>Sexo</b></td>
+                        <td><b>Género</b></td>
                         <td><?php echo $registo39['sexo'];?></td>
                       </tr>
 					  <tr>
@@ -255,7 +269,23 @@
 				<!-- DIV COMENTS -->
 				<div id="v_coment" class="col-md-9">
 					<div class="profile-content">
-					   nothing for now mas vai ter
+						<center><h2>Comentarios</h2></center>
+						<br>
+						<?php
+							if($registo41 = mysql_fetch_array($resultado41) == null)
+							{
+								echo "Este Usuario não fez nenhum comentario";
+							}
+							else
+							{	
+								while($registo42 = mysql_fetch_array($resultado42))
+								{
+									echo $registo42['mensagem'];
+									echo "<br>";
+								}
+							}
+							
+						?>
 					</div>
 				</div>
 			</div>
@@ -307,10 +337,6 @@
 
    <script src="admin/pages/assets/js/users.js"></script>
     <!-- jQuery -->
-    <script src="admin/vendor/jquery/jquery.min.js"></script>
-
-    <!-- Bootstrap Core JavaScript -->
-    <script src="admin/vendor/bootstrap/js/bootstrap.min.js"></script>
 
     <!-- Metis Menu Plugin JavaScript -->
     <script src="admin/vendor/metisMenu/metisMenu.min.js"></script>
