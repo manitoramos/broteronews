@@ -26,8 +26,8 @@
     <!-- Custom CSS -->
     <link href="admin/dist/css/sb-admin-2.css" rel="stylesheet">
 
-    <!-- Morris Charts CSS -->
-    <link href="admin/vendor/morrisjs/morris.css" rel="stylesheet">
+    <!-- Morris Charts CSS 
+    <link href="admin/vendor/morrisjs/morris.css" rel="stylesheet">-->
 
     <!-- Custom Fonts -->
     <link href="admin/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
@@ -244,10 +244,10 @@
     <!-- Metis Menu Plugin JavaScript -->
     <script src="admin/vendor/metisMenu/metisMenu.min.js"></script>
 
-    <!-- Morris Charts JavaScript -->
+    <!-- Morris Charts JavaScript 
     <script src="admin/vendor/raphael/raphael.min.js"></script>
     <script src="admin/vendor/morrisjs/morris.min.js"></script>
-    <script src="admin/data/morris-data.js"></script>
+    <script src="admin/data/morris-data.js"></script>-->
 
     <!-- Custom Theme JavaScript -->
     <script src="admin/dist/js/sb-admin-2.js"></script>

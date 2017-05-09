@@ -24,8 +24,6 @@
 
     <!-- Custom CSS -->
     <link href="admin/dist/css/sb-admin-2.css" rel="stylesheet">
-	
-	<link href="admin/pages/assets/css/comment.css" rel="stylesheet">
 
     <!-- Custom Fonts -->
     <link href="admin/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
