@@ -304,7 +304,7 @@ function gerar_s()
 	http.onreadystatechange = function() {
 		if(http.readyState == 4 && http.status == 200) {
 			
-			console.log(http.responseText);
+			//console.log(http.responseText);
 			
 		}
 	}
