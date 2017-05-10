@@ -82,8 +82,9 @@
 		  opacity: 1;
 		  right: 0;
 		}
-		
+		#loader-icon {position: fixed;top: 82%;width:100%;height:100%;text-align:center;display:none;}
     </style>
+
 
 
   </head>
@@ -162,48 +163,13 @@
           <div style="border-top: 1px solid #348DE6"></div>
           <br>
 
-          <?php
-					$anotherow = 0;
-      		$SQL1 = "SELECT * FROM noticias ORDER BY id DESC";
+	      		<div id="faq-result">
+				<?php include('getresult.php'); ?>
+				</div>
+				
+	
 
-	        $resultado1 = mysql_query($SQL1,$LIGA);
-					$resultado2 = mysql_query($SQL1,$LIGA);
-					while($registo1 = mysql_fetch_array($resultado1)){
-						$anotherow++;
-					}
-					$begin = 0;
-					$break = 0;
-
-	      		while($registo2 = mysql_fetch_array($resultado2)){
-							if($begin == 0){
-								echo "<div class=\"row text-center\">";
-							}
-		                    echo "<div class=\"col-md-3 col-sm-6\">";
-		                        echo "<div class=\" ex2\">";
-									echo "<span class=\"pull-left text-muted\" style=\"font-size:70%\">{$registo2['data']}</span>";
-									echo "<div class=\"pull-right text-muted monte\" style=\"font-size:70%;color:black;\"><span>Futebol</span></div>";
-		                            echo "<a href=\"noticia@{$registo2['id']}\"><img class=\"immgg\" src=\"{$registo2['imagem']}\" alt=\"\"></a>";
-		                            echo "<div class=\"caption\">";
-		                                echo "<h4><a style=\"text-decoration:none;\" href=\"noticia@{$registo2['id']}\">{$registo2['titulo']}</a></h4>";
-		                                echo "<p style=\"color:black;\">{$registo2['desshort']}</p>";
-		                            echo "</div>";
-		                        echo "</div>";
-		                    echo "</div>";
-							$begin++;
-							$break++;
-							if($begin == 4 && $anotherow > 4){
-								$begin = 0;
-								echo "</div>";
-							}
-							if($break == 8){
-								echo "<div class=\"row text-center\">";
-								break;
-							}
-	      		}
-
-    		  ?>
-
-			  </div>
+		</div>
 
       <!-- /.row -->
 
@@ -239,7 +205,6 @@
 	-->
 
 
-        </div>
 			<div class="col-md-3"  >
 				<h3>Destaques</h3>
 				<div style="border-top: 1px solid #348DE6"></div>
@@ -294,6 +259,42 @@
 
 					</script>
 
+<script>
+
+
+$(document).ready(function(){
+	function getresult(url) {
+		setTimeout(function(){
+		$.ajax({
+			url: url,
+			type: "GET",
+			data:  {rowcount:$("#rowcount").val()},
+			beforeSend: function(){
+			$('#loader-icon').show();
+			},
+			complete: function(){
+			$('#loader-icon').hide();
+			},
+			success: function(data){
+			$("#faq-result").append(data);
+			},
+			error: function(){} 	        
+	   });
+	   }, 500);
+	}
+	$(window).scroll(function(){
+		
+		if ($(window).scrollTop() == $(document).height() - $(window).height()){
+			if($(".pagenum:last").val() <= $(".total-page").val()) {
+				var pagenum = parseInt($(".pagenum:last").val()) + 1;
+				getresult('getresult.php?page='+pagenum);
+				$('#loader-icon').show();
+			}
+		}
+	}); 
+});
+
+</script>
 					<!-- standard version -->
 					<script src="https://cdn.rawgit.com/alertifyjs/alertify.js/v1.0.10/dist/js/alertify.js"></script>
 
@@ -313,7 +314,7 @@
         </div>
       </div>
 	   </div>
-
+<div id="loader-icon"><img src="LoaderIcon.gif" /></div>
     <?php include("assets/footer.php"); ?>
 
   </body>
