@@ -235,7 +235,7 @@
 										</div>
 										<div class="form-group">
 											 <label class="sr-only" for="exampleInputPassword2">Data de Nascimento</label>
-											 <input type="text" class="form-control" name="date" id="exampleInputPassword2" placeholder="Nascimento ex: 25-05-1998" required>
+											 <input type="text" class="form-control" name="date" id="exampleInputPassword2" placeholder="Nascimento ex: 1998-05-25" required>
 										</div>
 										<div class="form-group">
 											 <button type="submit" class="btn btn-primary btn-block">Registar</button>

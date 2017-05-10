@@ -23,9 +23,11 @@
 		
 		$cript = sha1(sha1("grubb" . $senha));	
 		
+		$dattaa = date("Y-m-d");
+		
 		//INSERIR O REGISTO DO UTILIZADOR
-		$registo = "INSERT INTO users (user,email,password,nome,sexo,since) VALUES 
-		('{$_POST['user']}','{$_POST['email']}','{$cript}','{$_POST['nome']}','{$_POST['sexo']}',". date("d/m/Y") .")";
+		$registo = "INSERT INTO users (user,email,password,nome,sexo,since,nascimento) VALUES 
+		('{$_POST['user']}','{$_POST['email']}','{$cript}','{$_POST['nome']}','{$_POST['sexo']}','{$dattaa}','{$_POST['date']}')";
 		$res = mysql_query($registo,$LIGA);
 		
 		$veri = "SELECT * FROM users";

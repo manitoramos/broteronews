@@ -213,7 +213,7 @@
           <div class="col-lg-12">
               <h1 class="page-header">Thumbnail Gallery</h1>
           </div>-->
-
+	<!-- IMAGENS SEM TEXTo
 		<div class="row">
 			  <div class="col-lg-3 col-md-3 col-xs-6 thumb">
 				  <a class="thumbnail" href="noticia.php">
@@ -236,6 +236,7 @@
 				  </a>
 			  </div>
 		  </div>
+	-->
 
 
         </div>
