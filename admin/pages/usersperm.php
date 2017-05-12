@@ -1,5 +1,6 @@
 <?php
 	include("assets/php/verificar_login.php");
+	include("assets/php/verificar_admin.php");
 	include("assets/bd/bd.php");
 ?>
 <!DOCTYPE html>

@@ -32,7 +32,7 @@
 						
 						while($reges1 = mysql_fetch_array($result1)){
 							echo "<li>";
-                            echo "<a href=\"#\">";
+                            echo "<a href=\"noticia@{$reges1['id']}\">";
 							echo "<div class=\"pull-left\" style=\"position:relative; right:7px; top:5px;\">";
 							echo "<img src=\"{$reges1['imagem']}\" width=\"30px\" height=\"30px\">";
 							echo "</div>";
@@ -264,6 +264,10 @@
 						<li>
                             <a href="#"><i class="fa fa-sitemap fa-fw"></i> <?php echo $registo6['acesso']; ?><span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
+							<?php
+								if($registo5['previlegios'] == 3)
+								{
+							?>
                                 <li>
                                     <a href="#">Users<span class="fa arrow"></span></a>
 									<ul class="nav nav-third-level">
@@ -275,6 +279,9 @@
                                         </li>
                                     </ul>
                                 </li>
+							<?php
+								}
+							?>
 								
                                 <li>
                                     <a href="#">Second Level Item</a>
