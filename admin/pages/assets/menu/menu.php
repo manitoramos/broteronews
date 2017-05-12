@@ -259,16 +259,16 @@
 							$registo6 = mysql_fetch_array($resultado6);
 						?>
                         <li>
-                            <a href="<?php echo $registo6['acesso']; ?>@home"><i class="fa fa-dashboard fa-fw"></i> Painel de Controlo</a>
+                            <a href="Admin@home"><i class="fa fa-dashboard fa-fw"></i> Painel de Controlo</a>
                         </li>
 						<li>
-                            <a href="#"><i class="fa fa-sitemap fa-fw"></i> Admin<span class="fa arrow"></span></a>
+                            <a href="#"><i class="fa fa-sitemap fa-fw"></i> <?php echo $registo6['acesso']; ?><span class="fa arrow"></span></a>
                             <ul class="nav nav-second-level">
                                 <li>
                                     <a href="#">Users<span class="fa arrow"></span></a>
 									<ul class="nav nav-third-level">
                                         <li>
-                                            <a href="<?php echo $registo6['acesso']; ?>@users">Permissões</a>
+                                            <a href="Admin@users">Permissões</a>
                                         </li>
                                         <li>
                                             <a href="#">##</a>
