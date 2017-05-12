@@ -302,7 +302,7 @@
                             <div class="navbar-footer-content">
                                 <div class="row">
                                     <div class="col-md-6">
-                                        <a href="#" class="btn btn-default btn-sm">Mudar Password</a>
+                                        <a href="perfil" class="btn btn-default btn-sm">Mudar Password</a>
                                     </div>
                                     <div class="col-md-6">
                                         <a href="sair@logout" class="btn btn-danger btn-sm pull-right">Logout</a>

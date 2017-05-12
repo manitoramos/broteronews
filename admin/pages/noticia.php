@@ -141,7 +141,7 @@
 						</div>
 					</fieldset>
 					</form>
-                        <div class="progress progress-striped active">
+                        <!--<div class="progress progress-striped active">
                                         <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="40" aria-valuemin="0" id="teste" aria-valuemax="100" style="width: 0%">
                                             <span class="sr-only">40% Complete (success)</span>
                                         </div>
@@ -162,7 +162,7 @@
 						}
 					  }
 					}
-					</script>
+					</script>-->
                     </div>
                     <!-- /.col-lg-12 -->
                 </div>
