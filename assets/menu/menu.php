@@ -278,7 +278,7 @@
 										echo "<img src=\"{$registo3['img']}\" alt=\"Alternate Text\" class=\"img-responsive\" />";
 									}
 								?>
-                                    <p class="text-center small"><a href="#">Mudar Foto</a></p>
+                                    <p class="text-center small"><a href="perfil">Mudar Foto</a></p>
                                 </div>
 								<?php
 									

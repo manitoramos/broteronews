@@ -57,6 +57,33 @@
         width: 100%;
         margin: auto;
       }
+	.newreply-topbar{
+		 height:30px;
+		 border-bottom:1px solid #dddddd;
+		 background-color:#f6f6f9;
+	} 
+	.newreply-textarea{
+		border:0;display:block;
+		height:100px;width:100%;
+		box-sizing:border-box;
+		padding:5px 10px;
+		background-color:#f2f2f2;
+		font-size:13px;color:#585858;
+		resize:vertical;
+	}
+	.newreply-post{
+		text-align: center;
+		font-size: 12px;
+		font-weight: 700;
+		padding 10px 14px;
+		display: inline-block;
+		color: #fff;
+		background-color: #2d6da3;
+		/*box-shadow: 0 1px 2px 0 rgba(0,0,0,0.1);*/
+		cursor:pointer;
+		border: 0;
+		margin: 10px 0;
+	}
     </style>
 
 
@@ -67,34 +94,43 @@
     <?php include("assets/menu/menu.php") ?>
 	<!-- \\TOP MENU -->
 		<div class="container">
-		
-			<div class="col-md-12">
-			
-				<img width="1110px" height="500px" src="<?php echo $registo1['imagem'];?>">
+			<div class="row">
+				<div class="col-md-12">
+				
+					<img width="1138px" height="500px" src="<?php echo $registo1['imagem'];?>">
+				</div>
+				<div class="col-md-9">
+					<p><b><?php echo $registo1['data']?></b></p>
+				</div>
+				<div class="col-md-3">
+					<p><b>visualizacoes, likes e comentarios</b></p>
+				</div>
 			</div>
+			<div class="row">
 			<div class="col-md-9">
-				<p><b><?php echo $registo1['data']?></b></p>
-			</div>
-			<div class="col-md-3">
-				<p><b>visualizacoes, likes e comentarios</b></p>
-			</div>
-		
-		</div>
-	  
-		<div class="container">
-			<div class="col-md-9">
+				<!-- Noticia -->
 				<h3><?php echo $registo1['titulo']; ?></h3>
 				<div style="border-top: 1px solid #348DE6"></div>
 				<p><?php echo $registo1['descricao']; ?></p>
-
-				
+				<!-- Comentarios -->
+				<h3>Comentarios</h3>
+				<div style="border-top: 1px solid #348DE6">
+					<br>
+					<div class="newreply-topbar"><span style="position:relative;top:5px;left:5px;">Novo Comentario</span></div>
+					<textarea class="newreply-textarea" placeholder="Escreva aqui o seu comentario"></textarea>
+					<button class="newreply-post" style="margin-top:10px;">Publicar Comentario</button>
+					<br>
+					<br>
+				</div>
 			</div>
 			<div class="col-md-3">
 				<h3>Destaques</h3>
 				<div style="border-top: 1px solid #348DE6"></div>
-			
+	
+			</div>
 			</div>
 		</div>
+	  
 	  
 
     <?php include("assets/footer.php"); ?>

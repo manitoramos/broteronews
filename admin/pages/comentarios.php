@@ -24,6 +24,7 @@
 
     <!-- Custom CSS -->
     <link href="admin/dist/css/sb-admin-2.css" rel="stylesheet">
+	<link href="admin/pages/assets/css/coment.css" rel="stylesheet">
 
     <!-- Custom Fonts -->
     <link href="admin/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
@@ -55,7 +56,7 @@
                 </div>
                 <!-- /.row -->
 				<div class="row">
-					<div class="col-lg-8">
+					<div class="col-lg-12">
 					<?php
 						$SQL1 = "SELECT * FROM comentarios WHERE Confirmed=\"No\"";
 	
@@ -63,7 +64,7 @@
 					
 						while($registo1 = mysql_fetch_array($resultado1))
 						{
-							echo "<div class=\"panel panel-primary\">";
+							/*echo "<div class=\"panel panel-primary\">";
 								echo "<div class=\"panel-heading\">";
 									echo "<span style=\"color:white;\">{$registo1["user"]}</span>";
 									echo "<div class=\"btn-group pull-right\">";
@@ -87,10 +88,37 @@
 								echo "<div class=\"panel-body\">";
 									echo "<p>{$registo1["mensagem"]}</p>";
 								echo "</div>";
+							echo "</div>";*/
+							
+							$SQL3 = "SELECT * FROM users WHERE user=\"{$registo1["user"]}\"";
+							$resultado3 = mysql_query($SQL3,$LIGA);
+							$registo3 = mysql_fetch_array($resultado3);
+							
+							/*echo "<div class=\"col-sm-1\">";
+							echo "<div class=\"thumbnail\">";
+							echo "<img class=\"img-responsive user-photo\" src=\"{$registo3['img']}\">";
+							echo "</div>";//thumbnail 
+							echo "</div>";//col-sm-1*/
+
+							echo "<div class=\"col-sm-12\">";
+							echo "<div class=\"panel panel-default\">";
+							echo "<div class=\"panel-heading\">";
+							echo "<strong>{$registo1["user"]}</strong> <span class=\"text-muted\">commented 5 days ago</span>";
 							echo "</div>";
+							echo "<div class=\"panel-body\">";
+							echo "{$registo1["mensagem"]}";
+							echo "</div>";//panel-body 
+							echo "<div class=\"pa-foot\">";
+								echo "&nbsp;&nbsp;&nbsp;<span>edited</span>";
+								echo "&nbsp;<a href=\"Admin@coment/{$registo1["sku"]}/1\"><span class=\"space\">Eliminar</span></a> <a href=\"Admin@coment/{$registo1["sku"]}/2\"><span class=\"space\">Publicar</span></a>";
+							echo "</div>";
+							echo "</div>";//panel panel-default 
+							echo "</div>";//col-sm-5	
 						}
 					
 					?>
+					
+                    
 					
 					<?php 
 					$SQL1 = "SELECT * FROM comentarios WHERE Confirmed=\"No\"";
