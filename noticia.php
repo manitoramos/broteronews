@@ -29,9 +29,6 @@
 
     <title><?php echo $registo1['titulo']; ?></title>
 
-    <!-- Bootstrap Core CSS -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-
     <!-- Custom CSS -->
     <link href="css/heroic-features.css" rel="stylesheet">
 	
@@ -84,6 +81,19 @@
 		border: 0;
 		margin: 10px 0;
 	}
+	.pa-foot{
+	border-top: 1px solid #ddd;
+	background-color: #f5f5f5
+}
+.space{
+	height: 20px;
+	line-height: 20px;
+	padding: 0 9px;
+	float: right;
+	vertical-align: middle;
+	border-left: 1px solid #dddddd;
+	cursor: pointer;
+}
     </style>
 
 
@@ -114,14 +124,62 @@
 				<p><?php echo $registo1['descricao']; ?></p>
 				<!-- Comentarios -->
 				<h3>Comentarios</h3>
-				<div style="border-top: 1px solid #348DE6">
+				<div style="border-top: 1px solid #348DE6"></div>
 					<br>
-					<div class="newreply-topbar"><span style="position:relative;top:5px;left:5px;">Novo Comentario</span></div>
+					<?php if(isset($_SESSION['user'])){ ?>
+					<div class="newreply-topbar"><span style="position:relative;top:5px;left:5px;color:#4d4dff;"><b>Novo Comentario</b></span></div>
 					<textarea class="newreply-textarea" placeholder="Escreva aqui o seu comentario"></textarea>
 					<button class="newreply-post" style="margin-top:10px;">Publicar Comentario</button>
 					<br>
+					<?php 
+					}
+					else{
+						echo "<center>Tens de fazer Login para poder comentar!!</center>";
+						echo "<br>";
+					}
+
+					?>
 					<br>
-				</div>
+					<?php
+						$SQL1 = "SELECT * FROM comentarios WHERE id='{$_GET['not']}'";
+	
+						$resultado1 = mysql_query($SQL1,$LIGA);
+					
+						while($registo1 = mysql_fetch_array($resultado1))
+						{				
+								$SQL3 = "SELECT * FROM users WHERE user=\"{$registo1["user"]}\"";
+								$resultado3 = mysql_query($SQL3,$LIGA);
+								$registo3 = mysql_fetch_array($resultado3);
+								
+								/*echo "<div class=\"col-sm-1\">";
+								echo "<div class=\"thumbnail\">";
+								echo "<img class=\"img-responsive user-photo\" src=\"{$registo3['img']}\">";
+								echo "</div>";//thumbnail 
+								echo "</div>";//col-sm-1*/
+
+
+								echo "<div class=\"panel panel-default\">";
+								echo "<div class=\"panel-heading\">";
+								echo "<strong>{$registo1["user"]}</strong> <span class=\"text-muted\">commented 5 days ago</span>";
+								echo "</div>";
+								echo "<div class=\"panel-body\">";
+								echo "{$registo1["mensagem"]}";
+								echo "</div>";//panel-body 
+								echo "<div class=\"pa-foot\">";
+									echo "&nbsp;&nbsp;&nbsp;<span>edited</span>";
+									if($registo3['previlegios'] == 3){
+										echo "&nbsp;<a href=\"Admin@coment/{$registo1["sku"]}/1\"><span class=\"space\">Reply</span></a> <a href=\"Admin@coment/{$registo1["sku"]}/2\"><span class=\"space\">Eliminar</span></a>";
+									}
+									else{
+										echo "&nbsp;<a href=\"Admin@coment/{$registo1["sku"]}/1\"><span class=\"space\">Eliminar</span></a> <a href=\"Admin@coment/{$registo1["sku"]}/2\"><span class=\"space\">Publicar</span></a>";
+									}
+								echo "</div>";
+								echo "</div>";//panel panel-default 
+						}
+					
+					?>
+					
+				
 			</div>
 			<div class="col-md-3">
 				<h3>Destaques</h3>
@@ -135,11 +193,7 @@
 
     <?php include("assets/footer.php"); ?>
 
-    <!-- jQuery -->
-    <script src="js/jquery.js"></script>
-
-    <!-- Bootstrap Core JavaScript -->
-    <script src="js/bootstrap.min.js"></script>
-
+	<!-- standard version -->
+	<script src="https://cdn.rawgit.com/alertifyjs/alertify.js/v1.0.10/dist/js/alertify.js"></script>
   </body>
 </html>

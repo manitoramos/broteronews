@@ -90,30 +90,31 @@
 								echo "</div>";
 							echo "</div>";*/
 							
-							$SQL3 = "SELECT * FROM users WHERE user=\"{$registo1["user"]}\"";
-							$resultado3 = mysql_query($SQL3,$LIGA);
-							$registo3 = mysql_fetch_array($resultado3);
 							
-							/*echo "<div class=\"col-sm-1\">";
-							echo "<div class=\"thumbnail\">";
-							echo "<img class=\"img-responsive user-photo\" src=\"{$registo3['img']}\">";
-							echo "</div>";//thumbnail 
-							echo "</div>";//col-sm-1*/
+								$SQL3 = "SELECT * FROM users WHERE user=\"{$registo1["user"]}\"";
+								$resultado3 = mysql_query($SQL3,$LIGA);
+								$registo3 = mysql_fetch_array($resultado3);
+								
+								/*echo "<div class=\"col-sm-1\">";
+								echo "<div class=\"thumbnail\">";
+								echo "<img class=\"img-responsive user-photo\" src=\"{$registo3['img']}\">";
+								echo "</div>";//thumbnail 
+								echo "</div>";//col-sm-1*/
 
-							echo "<div class=\"col-sm-12\">";
-							echo "<div class=\"panel panel-default\">";
-							echo "<div class=\"panel-heading\">";
-							echo "<strong>{$registo1["user"]}</strong> <span class=\"text-muted\">commented 5 days ago</span>";
-							echo "</div>";
-							echo "<div class=\"panel-body\">";
-							echo "{$registo1["mensagem"]}";
-							echo "</div>";//panel-body 
-							echo "<div class=\"pa-foot\">";
-								echo "&nbsp;&nbsp;&nbsp;<span>edited</span>";
-								echo "&nbsp;<a href=\"Admin@coment/{$registo1["sku"]}/1\"><span class=\"space\">Eliminar</span></a> <a href=\"Admin@coment/{$registo1["sku"]}/2\"><span class=\"space\">Publicar</span></a>";
-							echo "</div>";
-							echo "</div>";//panel panel-default 
-							echo "</div>";//col-sm-5	
+								echo "<div class=\"col-sm-12\">";
+								echo "<div class=\"panel panel-default\">";
+								echo "<div class=\"panel-heading\">";
+								echo "<strong>{$registo1["user"]}</strong> <span class=\"text-muted\">commented 5 days ago</span>";
+								echo "</div>";
+								echo "<div class=\"panel-body\">";
+								echo "{$registo1["mensagem"]}";
+								echo "</div>";//panel-body 
+								echo "<div class=\"pa-foot\">";
+									echo "&nbsp;&nbsp;&nbsp;<span>edited</span>";
+									echo "&nbsp;<a href=\"Admin@coment/{$registo1["sku"]}/1\"><span class=\"space\">Eliminar</span></a> <a href=\"Admin@coment/{$registo1["sku"]}/2\"><span class=\"space\">Publicar</span></a>";
+								echo "</div>";
+								echo "</div>";//panel panel-default 
+								echo "</div>";//col-sm-5	
 						}
 					
 					?>
