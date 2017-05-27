@@ -126,20 +126,6 @@
 				<h3>Comentarios</h3>
 				<div style="border-top: 1px solid #348DE6"></div>
 					<br>
-					<?php if(isset($_SESSION['user'])){ ?>
-					<div class="newreply-topbar"><span style="position:relative;top:5px;left:5px;color:#4d4dff;"><b>Novo Comentario</b></span></div>
-					<textarea class="newreply-textarea" placeholder="Escreva aqui o seu comentario"></textarea>
-					<button class="newreply-post" style="margin-top:10px;">Publicar Comentario</button>
-					<br>
-					<?php 
-					}
-					else{
-						echo "<center>Tens de fazer Login para poder comentar!!</center>";
-						echo "<br>";
-					}
-
-					?>
-					<br>
 					<?php
 						$SQL1 = "SELECT * FROM comentarios WHERE id='{$_GET['not']}'";
 	
@@ -177,6 +163,19 @@
 								echo "</div>";//panel panel-default 
 						}
 					
+					?>
+					<?php if(isset($_SESSION['user'])){ ?>
+					<div class="newreply-topbar"><span style="position:relative;top:5px;left:5px;color:#4d4dff;"><b>Novo Comentario</b></span></div>
+					<textarea class="newreply-textarea" placeholder="Escreva aqui o seu comentario"></textarea>
+					<button class="newreply-post" style="margin-top:10px;">Publicar Comentario</button>
+					<br>
+					<?php 
+					}
+					else{
+						echo "<center>Tens de fazer Login para poder comentar!!</center>";
+						echo "<br>";
+					}
+
 					?>
 					
 				

@@ -103,7 +103,7 @@
 					alertify.delay(0);
 					alertify.closeLogOnClick(true);
 					alertify.logPosition("bottom right");
-					alertify.error("Insira uma Imagem demasiado grande");
+					alertify.error("Tamanho da Imagem demasiado grande!!");
 				}else{
 					alertify.delay(0);
 					alertify.closeLogOnClick(true);
