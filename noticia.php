@@ -132,10 +132,12 @@
 						$resultado1 = mysql_query($SQL1,$LIGA);
 					
 						while($registo1 = mysql_fetch_array($resultado1))
-						{				
-								$SQL3 = "SELECT * FROM users WHERE user=\"{$registo1["user"]}\"";
+						{
+								//para saber se tem permisões para eleminar os comentarios
+								$SQL3 = "SELECT * FROM users WHERE user=\"{$_SESSION['user']}\"";
 								$resultado3 = mysql_query($SQL3,$LIGA);
 								$registo3 = mysql_fetch_array($resultado3);
+								//....\\\
 								
 								/*echo "<div class=\"col-sm-1\">";
 								echo "<div class=\"thumbnail\">";
@@ -144,9 +146,16 @@
 								echo "</div>";//col-sm-1*/
 
 
-								echo "<div class=\"panel panel-default\">";
+								echo "<div id=\"{$registo1['sku']}\" class=\"panel panel-default\">";
 								echo "<div class=\"panel-heading\">";
-								echo "<strong>{$registo1["user"]}</strong> <span class=\"text-muted\">commented 5 days ago</span>";
+								if($registo1['user'] == $_SESSION['user'])
+								{
+									echo "<strong style=\"color:red;\">Você</strong> <span class=\"text-muted\">commented 5 days ago</span>";
+								}
+								else
+								{
+									echo "<strong style=\"color:#4d4dff;\">{$registo1["user"]}</strong> <span class=\"text-muted\">commented 5 days ago</span>";
+								}
 								echo "</div>";
 								echo "<div class=\"panel-body\">";
 								echo "{$registo1["mensagem"]}";
@@ -164,10 +173,11 @@
 						}
 					
 					?>
+					<hr>
 					<?php if(isset($_SESSION['user'])){ ?>
 					<div class="newreply-topbar"><span style="position:relative;top:5px;left:5px;color:#4d4dff;"><b>Novo Comentario</b></span></div>
-					<textarea class="newreply-textarea" placeholder="Escreva aqui o seu comentario"></textarea>
-					<button class="newreply-post" style="margin-top:10px;">Publicar Comentario</button>
+					<textarea name="coment" id="coment" class="newreply-textarea" placeholder="Escreva aqui o seu comentario"></textarea>
+					<button onclick="postcoment(<?php echo $_GET['not']; ?>)" class="newreply-post" style="margin-top:10px;">Publicar Comentario</button>
 					<br>
 					<?php 
 					}
@@ -194,5 +204,59 @@
 
 	<!-- standard version -->
 	<script src="https://cdn.rawgit.com/alertifyjs/alertify.js/v1.0.10/dist/js/alertify.js"></script>
+	
+	<script>
+	function postcoment(x)
+	{
+		
+		var http = new XMLHttpRequest();
+		
+		var parametros = "noticia=" + x + "&comentario=" + document.getElementById("coment").value;
+		
+		http.open("POST", "assets/php/pubcom.php", true);
+		
+		http.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+
+		http.onreadystatechange = function() {
+			if(http.readyState == 4 && http.status == 200) 
+			{
+				//dividir o id da noticia do comentario
+				var str = http.responseText;
+				var res = str.split("/");
+				
+				if(res[1] == "")
+				{
+					alertify.delay(0);
+					alertify.closeLogOnClick(true);
+					alertify.logPosition("bottom right");
+					alertify.error("Escreve alguma coisa");
+					document.getElementById("coment").focus();
+				}
+				else if(res[2] == "true")
+				{
+					alertify.delay(0);
+					alertify.closeLogOnClick(true);
+					alertify.logPosition("bottom right");
+					alertify.success("Comentario Inserido");
+					setTimeout(function () {
+					window.location.href = "noticia@"+res[0];
+					}, 2000);
+				}
+				else if(res[2] == "false")
+				{
+					alertify.delay(0);
+					alertify.closeLogOnClick(true);
+					alertify.logPosition("bottom right");
+					alertify.error("Alguma coisa correu mal, tente mais tarde!!");
+				}
+				//console.log(res[3]);
+				
+			}
+		}
+		http.send(parametros);
+		
+		
+	}
+</script>
   </body>
 </html>

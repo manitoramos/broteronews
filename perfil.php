@@ -189,9 +189,6 @@
 	<!-- standard version -->
 	<script src="https://cdn.rawgit.com/alertifyjs/alertify.js/v1.0.10/dist/js/alertify.js"></script>
 
-	<!-- angular module -->
-	<script src="https://cdn.rawgit.com/alertifyjs/alertify.js/v1.0.10/dist/js/ngAlertify.js"></script>
-
     <?php include("assets/footer.php"); ?>
 
   </body>
