@@ -23,7 +23,7 @@
 			$headers = "From: BroteroNews <".$de.">\n";
 			$headers .= "Content-Type: Text/HTML; charset=UTF-8\n";
 			
-			$mensagem = "Sua Conta da BroteroNews foi Desativada consulte o suporte para mais informação.";
+			$mensagem = "Sua Conta da BroteroNews foi Desativada contacte o suporte para mais informação.";
 			
 			$email = $_POST['email'];
 			
