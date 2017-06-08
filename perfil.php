@@ -4,6 +4,7 @@
 	$_SESSION['pagina'] = "http://" . $_SERVER["SERVER_NAME"] . $_SERVER["PHP_SELF"];
 	include("assets/bd/bd.php");
 	date_default_timezone_set('Europe/Lisbon');
+	//echo $_SERVER['SERVER_NAME'];
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -83,6 +84,7 @@
 						$resultado9 = mysql_query($SQL9,$LIGA);
 						$registo9 = mysql_fetch_array($resultado9);
 						
+						//elemina a imagem
 						if(isset($_SESSION['img']))
 						{
 							unlink($_SESSION['img']);
