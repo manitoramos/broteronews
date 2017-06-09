@@ -70,7 +70,7 @@ function desativar(x)
 					alertify.delay(0);
 					alertify.closeLogOnClick(true);
 					alertify.logPosition("bottom right");
-					alertify.error("Erro ao mandar o E-mail para informar que a conta foi desativada");
+					toastr["error"]("Erro ao mandar o E-mail para informar que a conta foi desativada");
 				}
 				else if(res[1] == "Success"){
 					
@@ -78,7 +78,7 @@ function desativar(x)
 					alertify.delay(0);
 					alertify.closeLogOnClick(true);
 					alertify.logPosition("bottom right");
-					alertify.success("E-mail para informar o Desativar da Conta enviado com Sucesso");
+					toastr["success"]("E-mail para informar o Desativar da Conta enviado com Sucesso");
 				}
 				//document.getElementById("eye" + x).innerHTML = "<i class=\"-alt fa fa-2x fa-eye-slash fa-fw\"></i>";
 			}
@@ -91,7 +91,7 @@ function desativar(x)
 				alertify.delay(5000);
 				alertify.closeLogOnClick(true);
 				alertify.logPosition("bottom right");
-				alertify.success("Conta Reativada com Sucesso");
+				toastr["success"]("Conta Reativada com Sucesso");
 				//document.getElementById("eye" + x).innerHTML = "<i class=\"-alt fa fa-2x fa-eye fa-fw\"></i>";
 			}
 			
@@ -310,7 +310,7 @@ function gerar_s(x)
 					alertify.delay(0);
 					alertify.closeLogOnClick(true);
 					alertify.logPosition("bottom right");
-					alertify.error("Erro ao mandar o e-mail do reset da senha");
+					toastr["error"]("Erro ao mandar o e-mail do reset da senha");
 			}
 			else if(http.responseText == "Success"){
 					
@@ -318,7 +318,7 @@ function gerar_s(x)
 					alertify.delay(0);
 					alertify.closeLogOnClick(true);
 					alertify.logPosition("bottom right");
-					alertify.success("E-mail para informar o Reset da Senha enviado com Sucesso");
+					toastr["success"]("E-mail para informar o Reset da Senha enviado com Sucesso");
 			}
 		}
 	}
