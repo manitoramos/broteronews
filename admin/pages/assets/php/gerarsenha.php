@@ -34,7 +34,7 @@
 	
 	//echo $retorno;
 			
-			//email automatico para dizer que a conta foi desativada
+			//email automatico para lhe informar da sua nova password
 			/*
 			$de = "broteronews@gmail.com";
 			$headers = "From: BroteroNews <".$de.">\n";

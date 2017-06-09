@@ -95,7 +95,8 @@ function desativar(x)
 				//document.getElementById("eye" + x).innerHTML = "<i class=\"-alt fa fa-2x fa-eye fa-fw\"></i>";
 			}
 			
-			console.log(http.responseText);
+			//para ver se a erros
+			//console.log(http.responseText);
 			
 		}
 	}
