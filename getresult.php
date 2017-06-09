@@ -3,7 +3,7 @@ require_once("dbcontroller.php");
 $db_handle = new DBController();
 $perPage = 8;
 
-$sql = "SELECT * from noticias ORDER BY id DESC";
+$sql = "SELECT * from noticias WHERE Confirmed='Yes' ORDER BY id DESC";
 $page = 1;
 if(!empty($_GET["page"])) {
 $page = $_GET["page"];
