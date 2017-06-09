@@ -190,11 +190,11 @@
 					
 				
 			</div>
-			<div class="col-md-3">
-				<h3>Destaques</h3>
-				<div style="border-top: 1px solid #348DE6"></div>
-	
-			</div>
+			<!-- DESTAQUES -->
+			
+			<?php include("assets/menu/rightbar.php") ?>
+			
+			<!-- ...\\\\\  -->
 			</div>
 		</div>
 	  
