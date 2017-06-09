@@ -19,7 +19,7 @@
 			echo "/";
 			
 			//email automatico para dizer que a conta foi desativada
-			//$de = "broteronews@gmail.com";
+			$de = "broteronews@gmail.com";
 			$headers = "From: BroteroNews\n";
 			$headers .= "Content-Type: Text/HTML; charset=UTF-8\n";
 			

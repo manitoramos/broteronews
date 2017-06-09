@@ -28,16 +28,25 @@
 	$SQL1 = "UPDATE users SET password='{$cript}' WHERE id='{$_SESSION['usid']}'";
 	$resultado1 = mysql_query($SQL1,$LIGA);
 	
-	echo $retorno;
+	$SEL = "SELECT * from users WHERE id='{$_SESSION['usid']}'";
+	$resultado2 = mysql_query($SEL,$LIGA);
+	$registo1 = mysql_fetch_array($resultado2);
+	
+	//echo $retorno;
 			
 			//email automatico para dizer que a conta foi desativada
+			/*
 			$de = "broteronews@gmail.com";
 			$headers = "From: BroteroNews <".$de.">\n";
+			$headers .= "Content-Type: Text/HTML; charset=UTF-8\n";*/
+			
+			$de = "broteronews@gmail.com";
+			$headers = "From: BroteroNews\n";
 			$headers .= "Content-Type: Text/HTML; charset=UTF-8\n";
 			
-			$mensagem = "Sua palavra passe foi resetada.\nPass:{$retorno}";
+			$mensagem = "Sua palavra passe foi resetada:<b>{$retorno}</b>";
 			
-			$email = $_POST['email'];
+			$email = $registo1['email'];
 			
 			// formatação da mensagem em HTML
 			$mensagem = '<html>

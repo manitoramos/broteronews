@@ -303,8 +303,23 @@ function gerar_s(x)
 	http.onreadystatechange = function() {
 		if(http.readyState == 4 && http.status == 200) {
 			
-			console.log(http.responseText);
-			
+			//console.log(http.responseText);
+			if(http.responseText == "Error"){
+					
+					//Alert para alertar que o email foi não enviado com Sucesso
+					alertify.delay(0);
+					alertify.closeLogOnClick(true);
+					alertify.logPosition("bottom right");
+					alertify.error("Erro ao mandar o e-mail do reset da senha");
+			}
+			else if(http.responseText == "Success"){
+					
+					//Alert para alertar que o email foi enviado com Sucesso
+					alertify.delay(0);
+					alertify.closeLogOnClick(true);
+					alertify.logPosition("bottom right");
+					alertify.success("E-mail para informar o Reset da Senha enviado com Sucesso");
+			}
 		}
 	}
 	http.send(parametros);
