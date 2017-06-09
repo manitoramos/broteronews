@@ -64,11 +64,11 @@
                         <div class="panel-heading">
                             <div class="row">
                                 <div class="col-xs-3">
-                                    <i class="fa fa-comments fa-5x"></i>
+                                    <i class="fa fa-envelope-o fa-5x"></i>
                                 </div>
                                 <div class="col-xs-9 text-right">
 								<?php 
-									$SQL1 = "SELECT * FROM comentarios WHERE Confirmed=\"No\"";
+									$SQL1 = "SELECT * FROM noticias WHERE Confirmed=\"No\"";
 									$resultado1 = mysql_query($SQL1,$LIGA);
 									$i = 0;
 									while($registo1 = mysql_fetch_array($resultado1))
@@ -77,7 +77,7 @@
 									}
 									echo "<div class=\"huge\">{$i}</div>";
 								?>
-                                    <div>Comentarios!</div>
+                                    <div>Noticias!</div>
                                 </div>
                             </div>
                         </div>

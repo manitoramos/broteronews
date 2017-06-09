@@ -29,5 +29,30 @@
 	$resultado1 = mysql_query($SQL1,$LIGA);
 	
 	echo $retorno;
+			
+			//email automatico para dizer que a conta foi desativada
+			$de = "broteronews@gmail.com";
+			$headers = "From: BroteroNews <".$de.">\n";
+			$headers .= "Content-Type: Text/HTML; charset=UTF-8\n";
+			
+			$mensagem = "Sua palavra passe foi resetada.\nPass:{$retorno}";
+			
+			$email = $_POST['email'];
+			
+			// formatação da mensagem em HTML
+			$mensagem = '<html>
+			<head><meta http-equiv="Content-Type" content="text/html; charset=utf-8" /></head>
+			<body>
+			' . $mensagem . '
+			</body>
+			</html>';
+
+			$result = mail($email,'Reset de Palavra passe',$mensagem,$headers);
+			//Verifica se o e-mail foi enviado com Sucesso
+			if(!$result) {   
+				 echo "Error";   
+			} else {
+				echo "Success";
+			}
 	
 ?>

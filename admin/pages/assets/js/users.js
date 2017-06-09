@@ -288,9 +288,8 @@ function editprev(idd)
 }
 
 //gerar senha automatica para usuario
-function gerar_s()
+function gerar_s(x)
 {
-	
 	var http = new XMLHttpRequest();
 	
 	var parametros = "gerarsenha=true";
@@ -304,7 +303,7 @@ function gerar_s()
 	http.onreadystatechange = function() {
 		if(http.readyState == 4 && http.status == 200) {
 			
-			//console.log(http.responseText);
+			console.log(http.responseText);
 			
 		}
 	}
