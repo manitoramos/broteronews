@@ -182,7 +182,7 @@
 					<?php 
 					}
 					else{
-						echo "<center>Tens de fazer Login para poder comentar!!</center>";
+						echo "<center>Tem de fazer Login para poder comentar!!</center>";
 						echo "<br>";
 					}
 
