@@ -9,7 +9,7 @@
 
 		$resultado1 = mysql_query($SQL1,$LIGA);
 	}
-	else if($_GET["info"] == 2)
+	else if($_GET["info"] == 2)//Mudar este para reportar comentario
 	{
 		$SQL1 = "UPDATE comentarios SET Confirmed='Yes' WHERE sku='{$_GET['sku']}'";
 

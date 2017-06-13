@@ -163,10 +163,10 @@
 								echo "<div class=\"pa-foot\">";
 									echo "&nbsp;&nbsp;&nbsp;<span>edited</span>";
 									if($registo3['previlegios'] == 3){
-										echo "&nbsp;<a href=\"Admin@coment/{$registo1["sku"]}/1\"><span class=\"space\">Reply</span></a> <a href=\"Admin@coment/{$registo1["sku"]}/2\"><span class=\"space\">Eliminar</span></a>";
+										echo "&nbsp;<a href=\"\"><span class=\"space\">Reply</span></a> <a href=\"Admin@coment/{$registo1["sku"]}/1\"><span class=\"space\">Eliminar</span></a>";
 									}
 									else{
-										echo "&nbsp;<a href=\"Admin@coment/{$registo1["sku"]}/1\"><span class=\"space\">Eliminar</span></a> <a href=\"Admin@coment/{$registo1["sku"]}/2\"><span class=\"space\">Publicar</span></a>";
+										echo "&nbsp;<a href=\"Admin@coment/{$registo1["sku"]}/1\"><span class=\"space\">Eliminar</span></a> <a href=\"Admin@coment/{$registo1["sku"]}/2\"><span class=\"space\">Reportar</span></a>";
 									}
 								echo "</div>";
 								echo "</div>";//panel panel-default 
