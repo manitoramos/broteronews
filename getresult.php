@@ -33,7 +33,7 @@ foreach($faq as $k=>$v) {
 		                   $output .= "<div class=\"col-md-3 col-sm-6\">";
 		                      $output .= "<div class=\" ex2\">";
 $output .= "<span class=\"pull-left text-muted\" style=\"font-size:70%\">{$faq[$k]['data']}</span>";
-$output .= "<div class=\"pull-right text-muted monte\" style=\"font-size:70%;color:black;\"><span>Futebol</span></div>";
+$output .= "<div class=\"pull-right text-muted monte\" style=\"font-size:70%;color:black;\"><span>{$faq[$k]['categoria']}</span></div>";
 $output .= "<a href=\"noticia@{$faq[$k]['id']}\"><img class=\"immgg\" src=\"{$faq[$k]['imagem']}\" alt=\"\"></a>";
 		                            $output .= "<div class=\"caption\">";
 		                                $output .= "<h4><a style=\"text-decoration:none;\" href=\"noticia@{$faq[$k]['id']}\">{$faq[$k]['titulo']}</a></h4>";

@@ -34,6 +34,8 @@
 	<script src="admin/vendor/jquery/jquery.min.js"></script>
 	<link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.2/summernote.css"rel="stylesheet">
 	<script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.2/summernote.js"></script>
+	<link href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" rel="stylesheet"/>
+	<script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
 	
 
 	
@@ -42,8 +44,24 @@
 </head>
 
 <body>
-
 <script>
+toastr.options = {
+  "closeButton": true,
+  "debug": false,
+  "newestOnTop": false,
+  "progressBar": true,
+  "positionClass": "toast-top-right",
+  "preventDuplicates": true,
+  "onclick": null,
+  "showDuration": "300",
+  "hideDuration": "1000",
+  "timeOut": "5000",
+  "extendedTimeOut": "1000",
+  "showEasing": "swing",
+  "hideEasing": "linear",
+  "showMethod": "fadeIn",
+  "hideMethod": "fadeOut"
+}
 	$(document).ready(function (e) {
 	$("#mandar").on('submit',(function(e) {
 		e.preventDefault();
@@ -57,30 +75,30 @@
 			success: function(data)
 		    {
 				if(data == "true"){
-					alertify.delay(0);
-					alertify.closeLogOnClick(true);
-					alertify.logPosition("bottom right");
-					alertify.success("Notícia Inserida Com Sucesso!");
-					mudarnot();
+					toastr["success"]("Notícia inserida com Sucesso! Aguardando Publicação");
+					mudarnot();//notificação mudificar para dar a admin que esteja on
 				}else if(data == "false"){
-					alertify.delay(0);
-					alertify.closeLogOnClick(true);
-					alertify.logPosition("bottom right");
-					alertify.error("Erro ao Inserir a Notícia");
+					toastr["error"]("Erro ao Inserir a Notícia!!");
 					//alertify.log("<img src='" + data +"'><h3>This is HTML</h3><p>It's great, right?</p>");
 				}else{
-					alertify.delay(0);
-					alertify.closeLogOnClick(true);
-					alertify.logPosition("bottom right");
-					alertify.error("Algum Campo em Branco!!");
+					var str = data;
+					var res = str.split("///");
+					if(res[1] == "")
+					{
+						toastr["error"]("Alguma coisa deu errado!!");
+					}
+					else
+					{
+						toastr["warning"](res[1]);
+						if(res[2] == "titulo"){document.getElementById("titulo").focus();}
+						else if(res[2] == "descricao"){document.getElementById("summernote").focus();}
+						else if(res[2] == "desshort"){document.getElementById("desshort").focus();}
+					}
 				}
 		    },
 		  	error: function() 
 	    	{
-				alertify.delay(0);
-				alertify.closeLogOnClick(true);
-				alertify.logPosition("bottom right");
-				alertify.error("Erro! Não inseriste alguma coisa bem!");
+				toastr["error"]("Erro! Não inseriste alguma coisa bem!");
 	    	} 	        
 	   });
 	}));
@@ -114,16 +132,28 @@
 							</div>	  
 						</div>
 						<div class="form-group">
-							<label class="col-md-12 control-label" style="text-align:center" for="textinput">Mensagem</label>
-							<div class="col-md-12">
-								<textarea class="form-control" id="summernote" rows="10" name="descricao"></textarea>
-							</div>
+							<label class="col-md-12 control-label" style="text-align:center" for="textinput">Categoria</label>
+							<div class="col-md-5"></div>						
+							<div class="col-md-2">
+								<select class="form-control" name="categoria" id="categoria">
+								<option value="" style="display:none">Categoria</option>
+								<?php
+									$SQL39 = "SELECT * FROM categorias";
+									$resultado39 = mysql_query($SQL39,$LIGA);
+									
+									while($registo39 = mysql_fetch_array($resultado39))
+									{
+										echo "<option value=\"{$registo39['categoria']}\">{$registo39['categoria']}</option>";
+									}
+								?>
+								</select>
+							</div>	  
 						</div>
 						<div class="form-group">
 							<label class="col-md-12 control-label" style="text-align:center" for="textinput">Descrição breve maximo 45 caracters</label>
 							<div class="col-md-2"></div>
 							<div class="col-md-8">
-								<textarea class="form-control" rows="2" id="desshort" name="desshort"></textarea>
+								<input class="form-control" id="desshort" name="desshort">
 							</div>
 						</div>
 						<div class="form-group">
@@ -132,6 +162,13 @@
 								<center><input name="image" class="input-file" type="file"></center>
 							</div>
 						</div>
+						<div class="form-group">
+							<label class="col-md-12 control-label" style="text-align:center" for="textinput">Mensagem</label>
+							<div class="col-md-12">
+								<textarea class="form-control" id="summernote" rows="10" name="descricao"></textarea>
+							</div>
+						</div>
+						
 						<div class="form-group">
 							<label class="col-md-12 control-label" for="singlebutton"></label>
 							<div class="col-md-12">
@@ -176,8 +213,8 @@
     <!-- /#wrapper -->
 
 	
-    <!-- ALERTIFY -->
-    <script src="https://cdn.rawgit.com/alertifyjs/alertify.js/v1.0.10/dist/js/alertify.js"></script>
+    <!-- ALERTIFY 
+    <script src="https://cdn.rawgit.com/alertifyjs/alertify.js/v1.0.10/dist/js/alertify.js"></script>-->
 
     <!-- Bootstrap Core JavaScript -->
     <script src="admin/vendor/bootstrap/js/bootstrap.min.js"></script>
@@ -187,14 +224,14 @@
 
     <!-- Custom Theme JavaScript -->
     <script src="admin/dist/js/sb-admin-2.js"></script>
+	
 	<script>
-		$(document).ready(function() {
-			$('#summernote').summernote();
-			height: 500
-		});
-	</script>
-	
-	
+	$('#summernote').summernote({
+	  height: 300,                 // set editor height
+	  minHeight: 300,             // set minimum height of editor
+	  maxHeight: null,             // set maximum height of editor
+	});
+</script>
 
 </body>
 

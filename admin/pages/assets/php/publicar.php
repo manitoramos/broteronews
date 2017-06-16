@@ -17,13 +17,15 @@
 	//if(($_POST['titulo'] == "") or ($_POST['descricao'] == "") or ($_POST['desshort'] == "") or ($_FILES['image']['name'] == "")){
 		//echo "Algum Campo nao foi Inserido!";
 	if($_POST['titulo'] == ""){
-		echo "Campo do Titulo em Branco!!";
+		echo "///Campo do Titulo em Branco!!///titulo";
+	}else if($_POST['categoria'] == ""){
+		echo "///Categoria nao preenchido!!///categoria";
 	}else if($_POST['descricao'] == ""){
-		echo "Campo da Mensagem em Branco!!";
+		echo "///Campo da Mensagem em Branco!!///descricao";
 	}else if($_POST['desshort'] == ""){
-		echo "Campo da Descrição Breve em Branco!!";
+		echo "///Campo da Descrição Breve em Branco!!///desshort";
 	}else if($_FILES['image']['name'] == ""){
-		echo "Tem de Inserir uma Imagem!!";
+		echo "///Tem de Inserir uma Imagem!!///imagem";
 	}else{
 		$SQL1 = "SELECT * FROM noticias";
 		$resultado1 = mysql_query($SQL1,$LIGA);
@@ -33,7 +35,7 @@
 			$begin++;
 		}
 		
-		$INS1 = "INSERT INTO noticias (autor,titulo,descricao,desshort,imagem,data) VALUES ('{$_SESSION['user']}','{$_POST['titulo']}','{$_POST['descricao']}','{$_POST['desshort']}','assets/img/{$_FILES['image']['name']}','" .  date("Y-m-d") . "')";
+		$INS1 = "INSERT INTO noticias (id_categoria,autor,titulo,descricao,desshort,imagem,data) VALUES ('{$_POST['categoria']}','{$_SESSION['user']}','{$_POST['titulo']}','{$_POST['descricao']}','{$_POST['desshort']}','assets/img/{$_FILES['image']['name']}','" .  date("Y-m-d") . "')";
 		$res1 = mysql_query($INS1,$LIGA);
 		
 		//Comparar depois de inserir para ver se inseriu para mandar o (return false ou true) para mostrar a mensagem de (erro ou de sucesso)
