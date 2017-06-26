@@ -59,6 +59,12 @@
                             </a>
                         </li>
 						<li>
+                            <a class="text-center" href="Admin@nova_categoria">
+                                <strong>Pedido de Categoria</strong>
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        </li>
+						<li>
                             <a class="text-center" href="Admin@nova_noticia">
                                 <strong>Escrever uma nova Notícia</strong>
                                 <i class="fa fa-angle-right"></i>
