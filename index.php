@@ -213,12 +213,12 @@
 				<br>
 				<p>Aqui vão ficar as noticias em destaque</p>
 				<br>
-				<h3>Psicóloga</h3>
+				<!--<h3>Psicóloga</h3>
 				<div style="border-top: 1px solid #348DE6"></div>
 				<br>
 				<p>	Tens uma pergunta que gostarias de colocar à psicóloga, e gostarias de vê-la respondinda no jornal?<br>
-
-					<!--MODAL-->
+				-->
+					<!--MODAL
 
 					<center><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">Pergunta</button></center>
 
@@ -260,7 +260,7 @@
 						//var notification = alertify.notify('sample', 'success', 5, function(){  console.log('dismissed'); });
 
 					</script>
-
+-->
 <script>
 
 

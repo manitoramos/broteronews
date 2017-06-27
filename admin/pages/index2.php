@@ -450,7 +450,7 @@
 
     </div>
     <!-- /#wrapper -->
-
+	
     <!-- jQuery -->
     <script src="admin/vendor/jquery/jquery.min.js"></script>
 
@@ -467,6 +467,20 @@
 
     <!-- Custom Theme JavaScript -->
     <script src="admin/dist/js/sb-admin-2.js"></script>
+	
+	<script>
+	/*$(document).ready(function(){ 
+	  document.oncontextmenu = function() {return false;};
+
+	  $(document).mousedown(function(e){ 
+		if( e.button == 2 ) { 
+		  alert('Right mouse button!'); 
+		  return false; 
+		} 
+		return true; 
+	  }); 
+	});*/
+	</script>
 
 </body>
 

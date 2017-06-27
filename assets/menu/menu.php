@@ -63,20 +63,34 @@
                             <li><a href="#">Ver Todas as Noticias <span class="glyphicon glyphicon-chevron-right pull-right"></span></a></li>
 						</ul>
 					</li>
-					<li class="col-sm-3">
+					<li class="col-sm-2">
 						<ul>
-							<li class="dropdown-header">Features</li>
-							<li><a href="#">Auto Carousel</a></li>
-                            <li><a href="#">Carousel Control</a></li>
-                            <li><a href="#">Left & Right Navigation</a></li>
-							<li><a href="#">Four Columns Grid</a></li>
-							<li class="divider"></li>
-							<li class="dropdown-header">Fonts</li>
-                            <li><a href="#">Glyphicon</a></li>
-							<li><a href="#">Google Fonts</a></li>
+							<li class="dropdown-header">Categorias</li>
+							<?php
+								$countcat = 0;
+								$SQL8 = "SELECT * FROM categorias";
+								$resultado8 = mysql_query($SQL8,$LIGA);
+								while($registo8 = mysql_fetch_array($resultado8))
+								{
+									if($countcat == 8)
+									{
+										echo "</ul>";
+										echo "</li>";
+										echo "<li class=\"col-sm-2\">";
+										echo "<ul>";
+										echo "<li class=\"dropdown-header\">&nbsp;</li>";
+									}
+									echo "<li><a href=\"{$registo8['id']}\">{$registo8['categoria']}</a></li>";
+									$countcat++;
+								}
+								echo "</ul>";
+								echo "</li>";
+								
+							?>
+				<!--
 						</ul>
 					</li>
-					<li class="col-sm-3">
+					<li class="col-sm-2">
 						<ul>
 							<li class="dropdown-header">Plus</li>
 							<li><a href="#">Navbar Inverse</a></li>
@@ -85,7 +99,7 @@
 							<li><a href="#">Primary Buttons & Default</a></li>							
 						</ul>
 					</li>
-					<li class="col-sm-3">
+					<li class="col-sm-2">
 						<ul>
 							<li class="dropdown-header">Much more</li>
                             <li><a href="#">Easy to Customize</a></li>
@@ -94,8 +108,10 @@
 							<li><a href="#">Slide down on Hover</a></li>                         
 						</ul>
 					</li>
+					-->
 				</ul>				
 			</li>
+			<!--
             <li class="dropdown mega-dropdown cross">
     			<a href="#" class="dropdown-toggle" data-toggle="dropdown">Categorias <span class="caret"></span></a>				
 				<ul class="dropdown-menu mega-dropdown-menu mannn">
@@ -139,19 +155,19 @@
                                     <a href="#"><img src="http://placehold.it/254x150/3498db/f5f5f5/&text=New+Collection" class="img-responsive" alt="product 1"></a>
                                     <h4><small>Summer dress floral prints</small></h4>                                        
                                     <button class="btn btn-primary" type="button">49,99 €</button> <button href="#" class="btn btn-default" type="button"><span class="glyphicon glyphicon-heart"></span> Add to Wishlist</button>       
-                                </div><!-- End Item -->
+								</div>--><!-- End Item 
                                 <div class="item">
                                     <a href="#"><img src="http://placehold.it/254x150/ff3546/f5f5f5/&text=New+Collection" class="img-responsive" alt="product 2"></a>
                                     <h4><small>Gold sandals with shiny touch</small></h4>                                        
                                     <button class="btn btn-primary" type="button">9,99 €</button> <button href="#" class="btn btn-default" type="button"><span class="glyphicon glyphicon-heart"></span> Add to Wishlist</button>        
-                                </div><!-- End Item -->
+                                </div>--><!-- End Item 
                                 <div class="item">
                                     <a href="#"><img src="http://placehold.it/254x150/2ecc71/f5f5f5/&text=New+Collection" class="img-responsive" alt="product 3"></a>
                                     <h4><small>Denin jacket stamped</small></h4>                                        
                                     <button class="btn btn-primary" type="button">49,99 €</button> <button href="#" class="btn btn-default" type="button"><span class="glyphicon glyphicon-heart"></span> Add to Wishlist</button>      
-                                </div><!-- End Item -->                                
-                              </div><!-- End Carousel Inner -->
-                              <!-- Controls -->
+                                </div>--><!-- End Item                                 
+                              </div>--><!-- End Carousel Inner -->
+                              <!-- Controls 
                               <a class="left carousel-control" style="width: 30px;height: 30px;top: -35px;right: 30px;left: inherit;" href="#womenCollection" role="button" data-slide="prev">
                                 <span class="glyphicon glyphicon-chevron-left" style="font-size: 12px;background-color: #fff;line-height: 30px;text-shadow: none;color: #333;border: 1px solid #ddd;" aria-hidden="true"></span>
                                 <span class="sr-only">Previous</span>
@@ -160,13 +176,14 @@
                                 <span class="glyphicon glyphicon-chevron-right" style="font-size: 12px;background-color: #fff;line-height: 30px;text-shadow: none;color: #333;border: 1px solid #ddd;" aria-hidden="true"></span>
                                 <span class="sr-only">Next</span>
                               </a>
-                            </div><!-- /.carousel -->
+                            </div>--><!-- /.carousel
                             <li class="divider"></li>
                             <li><a href="#">View all Collection <span class="glyphicon glyphicon-chevron-right pull-right"></span></a></li>
 						</ul>
 					</li>
 				</ul>				
 			</li>
+			 -->
             <li><a href="ESAB">Sobre</a></li>
 		</ul>
 		<div id="menuimgalt">
