@@ -133,6 +133,8 @@
 					
 						while($registo1 = mysql_fetch_array($resultado1))
 						{
+							if(isset($_SESSION['user']))
+							{
 								//para saber se tem permisões para eleminar os comentarios
 								$SQL3 = "SELECT * FROM users WHERE user=\"{$_SESSION['user']}\"";
 								$resultado3 = mysql_query($SQL3,$LIGA);
@@ -170,6 +172,28 @@
 									}
 								echo "</div>";
 								echo "</div>";//panel panel-default 
+							}
+							else
+							{
+								/*echo "<div class=\"col-sm-1\">";
+								echo "<div class=\"thumbnail\">";
+								echo "<img class=\"img-responsive user-photo\" src=\"{$registo3['img']}\">";
+								echo "</div>";//thumbnail 
+								echo "</div>";//col-sm-1*/
+
+
+								echo "<div id=\"{$registo1['sku']}\" class=\"panel panel-default\">";
+								echo "<div class=\"panel-heading\">";
+									echo "<strong style=\"color:#4d4dff;\">{$registo1["user"]}</strong> <span class=\"text-muted\">commented 5 days ago</span>";
+								echo "</div>";
+								echo "<div class=\"panel-body\">";
+								echo "{$registo1["mensagem"]}";
+								echo "</div>";//panel-body 
+								echo "<div class=\"pa-foot\">";
+									echo "&nbsp;&nbsp;&nbsp;<span>edited</span>";
+								echo "</div>";
+								echo "</div>";//panel panel-default 
+							}
 						}
 					
 					?>
