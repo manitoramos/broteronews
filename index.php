@@ -208,11 +208,28 @@
 			
 			
 			<div class="col-md-3">
-				<h3>Destaques</h3>
+				<h3>Notícias Mais Vistas</h3>
 				<div style="border-top: 1px solid #348DE6"></div>
 				<br>
-				<p>Aqui vão ficar as noticias em destaque</p>
+				<div>
+					<img src="assets/img/thebest.jpg" width="100" height="60" style="float:left;">
+					Cristiano Ronaldo Eleito Melhor do Mundo Pela Fifa
+				</div>
 				<br>
+				<div>
+					<img src="assets/img/thebest.jpg" width="100" height="60" style="float:left;">
+					Cristiano Ronaldo Eleito Melhor do Mundo Pela Fifa
+				</div>
+				<br>
+				<div>
+					<img src="assets/img/thebest.jpg" width="100" height="60" style="float:left;">
+					Cristiano Ronaldo Eleito Melhor do Mundo Pela Fifa
+				</div>
+				<br>
+				<div>
+					<img src="assets/img/thebest.jpg" width="100" height="60" style="float:left;">
+					Cristiano Ronaldo Eleito Melhor do Mundo Pela Fifa
+				</div>
 				<!--<h3>Psicóloga</h3>
 				<div style="border-top: 1px solid #348DE6"></div>
 				<br>
