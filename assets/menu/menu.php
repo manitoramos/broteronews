@@ -310,6 +310,11 @@
 									{
 										echo "<a href=\"Admin@home\" class=\"btn btn-warning btn-sm\">Admin</a>";
 									}
+									
+									if($registo3['previlegios'] == '2')
+									{
+										echo "<a href=\"Admin@home\" class=\"btn btn-success btn-sm\">Editor</a>";
+									}
 								?>
 									
                                 </div>

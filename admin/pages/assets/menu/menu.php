@@ -290,7 +290,13 @@
 							?>
 								
                                 <li>
-                                    <a href="#">Second Level Item</a>
+                                    <a href="Admin@nova_noticia">Escrever uma Nova Notícia</a>
+                                </li>
+								<li>
+                                    <a href="Admin@noticias">Mostrar Todas as Notícias</a>
+                                </li>
+								<li>
+                                    <a href="#">Pedido de Categoria</a>
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->
