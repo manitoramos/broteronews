@@ -22,6 +22,7 @@ $pages  = ceil($_GET["rowcount"]/$perPage);
 $output = '';
 $begin = 0;
 $break = 0;
+$veribre = 0;
 
 $anotherow = $db_handle->numRows($sql);
 if(!empty($faq)) {
@@ -49,9 +50,14 @@ $output .= "<a href=\"noticia@{$faq[$k]['id']}\"><img class=\"immgg\" src=\"{$fa
 							}
 							if($break == 9){
 								$output .= "<div class=\"row text-center\">";
+								$veribre++;
 								break;
 							}
 }
+	if($_GET["rowcount"] <= 8)
+	{
+		$output .= "</div>";
+	}
 }
 print $output;
 ?>
