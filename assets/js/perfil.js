@@ -32,8 +32,6 @@
         alert("This is a demo.\n :-)");
     });
 });*/
-
-
 	function hey()
 	{ 
 		document.getElementById("anpass").focus();
@@ -60,17 +58,58 @@
 			document.getElementById("coinpass").style.display = "none";
 			$("#rpass").removeClass("has-error");
 			$("#rpass").addClass("has-success");
+			document.getElementById("savebutt").disabled = false;
 		}
 		else if((document.getElementById("new2pass").value.length >= document.getElementById("newpass").value.length) && (document.getElementById("new2pass").value != document.getElementById("newpass").value))
 		{
 			$("#rpass").addClass("has-error");
 			document.getElementById("coinpass").style.display = "";
+			document.getElementById("savebutt").disabled = true;
 		}
 		else
 		{
 			$("#rpass").addClass("has-error");
-			document.getElementById("coinpass").style.display = "none";
+			document.getElementById("coinpass").style.display = "";
+			document.getElementById("savebutt").disabled = true;
 		}
+		
+	}
+	
+	//Guardar nova password
+	function savefy()
+	{
+		
+		var http = new XMLHttpRequest();
+	
+		var parametros = "savepass=yes&oldpw=" + document.getElementById("anpass").value + "&newpw=" + document.getElementById("newpass").value + "&new2pw=" + document.getElementById("new2pass");
+		
+		http.open("POST", "assets/php/perfilpass.php", true);
+		
+		http.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+
+		http.onreadystatechange = function() {
+			if(http.readyState == 4 && http.status == 200) 
+			{
+				
+				if(http.responseText == "falseold")
+				{
+					toastr["error"]("A antiga password não esta correta, tente novamente!!");
+				}
+				else if(http.responseText == "falsenew")
+				{
+					toastr["error"]("A password não coincide!!");
+					document.getElementById("new2pass").focus();
+				}
+				else if(http.responseText == "truechange")
+				{
+					toastr["success"]("A password foi mudada com sucesso!!");
+				}
+				
+				console.log(http.responseText);
+				
+			}
+		}
+		http.send(parametros);
 		
 	}
 	

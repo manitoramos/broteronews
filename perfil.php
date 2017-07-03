@@ -235,11 +235,11 @@
               </div>
             </div>
                  <div class="panel-footer">
-                        <a type="button" href="#" onclick="cleanpass()" class="btn btn-sm btn-default">Limpar<i class=""></i></a>
+                        <a type="button" onclick="cleanpass()" class="btn btn-sm btn-default">Limpar<i class=""></i></a>
                         <span class="pull-right">
                             <!--<a href="edit.html" data-original-title="Edit this user" data-toggle="tooltip" type="button" class="btn btn-sm btn-warning"><i class="glyphicon glyphicon-edit"></i></a>-->
               
-							<a type="button" href="#" class="btn btn-sm btn-primary">Guardar<i class=""></i></a>
+							<button id="savebutt" onclick="savefy()" class="btn btn-sm btn-primary" disabled>Guardar</button>
                         </span>
                     </div>
             
