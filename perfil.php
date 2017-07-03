@@ -141,7 +141,7 @@
                         <td>Password</td>
                         <td>
 							<?php echo "************";?> &nbsp; &nbsp;
-							<a href="#" onclick="hey()" data-original-title="Edit this user" data-toggle="tooltip" type="" class="warning">
+							<a href="#" onclick="hey()" type="" class="warning">
 							<i class="glyphicon glyphicon-edit"></i></a>
 						</td>
                       </tr>
@@ -174,6 +174,79 @@
           </div>
         </div>
       </div>
+	  <!-- Password CHANGE -->
+	  
+	  <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-10 col-lg-10 col-xs-offset-0 col-sm-offset-0 col-md-offset-1 col-lg-offset-1 toppad" >
+   
+   
+          <div class="panel panel-info">
+            <div class="panel-heading">
+			
+				<h3 class="panel-title">Mudar Password</h3>
+            </div>
+            <div class="panel-body">
+              <div class="row">
+			  <!-- CONTEUDO DO MUDAR A PASSWORD -->
+						<fieldset>
+						<!-- Text input-->
+						<div class="form-group">
+						<div class="col-md-2"></div>
+						  <label class="col-md-2 control-label" for="anpass">Antiga Password</label>  
+						  <div class="col-md-4">
+						  <input id="anpass" name="anpass" type="password" placeholder="" class="form-control input-md">
+							
+						  </div>
+						</div>
+						
+						<br>
+						<br>
+
+						<!-- Text input-->
+						<div class="form-group">
+						  <div class="col-md-2"></div>
+						  <label class="col-md-2 control-label" for="newpass">Nova Password</label>  
+						  <div class="col-md-4">
+						  <input id="newpass" name="newpass" type="password" placeholder="" class="form-control input-md">
+						
+						  </div>
+						  
+						</div>
+						
+						<br>
+						<br>
+
+						<!-- Text input-->
+						<div id="rpass" class="form-group">
+						<div class="col-md-2"></div>
+						  <label class="col-md-2 control-label" for="new2pass">Repita Nova Password</label>  
+						  <div class="col-md-4">
+						  <input id="new2pass" name="new2pass" onkeyup="veryfy()" type="password" placeholder="" class="form-control input-md">
+						  <label id="coinpass" class="control-label" style="display:none;">As Passwords nao coincidem</label>
+						  </div>
+						</div>
+
+						</fieldset>
+			  
+			  
+			  
+			  
+			  
+              </div>
+            </div>
+                 <div class="panel-footer">
+                        <a type="button" href="#" onclick="cleanpass()" class="btn btn-sm btn-default">Limpar<i class=""></i></a>
+                        <span class="pull-right">
+                            <!--<a href="edit.html" data-original-title="Edit this user" data-toggle="tooltip" type="button" class="btn btn-sm btn-warning"><i class="glyphicon glyphicon-edit"></i></a>-->
+              
+							<a type="button" href="#" class="btn btn-sm btn-primary">Guardar<i class=""></i></a>
+                        </span>
+                    </div>
+            
+          </div>
+        </div>
+      </div>
+	  
     </div>
 	<br>
 	

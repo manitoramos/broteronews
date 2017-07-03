@@ -7,6 +7,10 @@
 	else
 	{
 		include("assets/bd/bd.php");
+		
+		$UPD1 = "UPDATE noticias SET views=views+1 WHERE id={$_GET['not']}";
+		
+		$res = mysql_query($UPD1,$LIGA);
 	}
 	
 	$SQL1 = "SELECT * FROM noticias WHERE id={$_GET['not']}";

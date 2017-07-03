@@ -54,7 +54,7 @@ $output .= "<a href=\"noticia@{$faq[$k]['id']}\"><img class=\"immgg\" src=\"{$fa
 								break;
 							}
 }
-	if($_GET["rowcount"] <= 8)
+	if($_GET["rowcount"] < 8)
 	{
 		$output .= "</div>";
 	}

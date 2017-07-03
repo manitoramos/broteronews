@@ -34,46 +34,44 @@
 });*/
 
 
-	function hey(){
-		alertify
-		  .defaultValue("Escreve a Antiga Password")
-		  .prompt("Mudar Password",
-			function (val, ev) {
-
-			  // The click event is in the event variable, so you can use it here.
-			  ev.preventDefault();
-
-				alertify
-				  .defaultValue("Escreve a Nova Password")
-				  .prompt("Mudar Password",
-					function (val2, ev) {
-
-					  // The click event is in the event variable, so you can use it here.
-					  ev.preventDefault();
-
-					  // The value entered is availble in the val variable.
-					  alertify.success("Antiga: " + val + " Nova: " + val2);
-
-					}, function(ev) {
-
-					  // The click event is in the event variable, so you can use it here.
-					  ev.preventDefault();
-
-					  alertify.error("Cancelas-te a operação");
-
-					}
-				  );
-
-			}, function(ev) {
-
-			  // The click event is in the event variable, so you can use it here.
-			  ev.preventDefault();
-
-			  alertify.error("Cancelas-te a operação");
-
-			}
-		  );
-		  
+	function hey()
+	{ 
+		document.getElementById("anpass").focus();
+	}
+	
+	
+	function cleanpass()
+	{
+		//limpar os dados de mudar a password
+		document.getElementById("anpass").value = "";
+		document.getElementById("newpass").value = "";
+		document.getElementById("new2pass").value = "";
+		$("#rpass").removeClass("has-error");
+		$("#rpass").removeClass("has-success");
+		document.getElementById("coinpass").style.display = "none";
+	}
+	
+	
+	function veryfy()
+	{
+		//verificar a 2 palavra pass para ver se coincide com a primeira
+		if(document.getElementById("new2pass").value == document.getElementById("newpass").value)
+		{
+			document.getElementById("coinpass").style.display = "none";
+			$("#rpass").removeClass("has-error");
+			$("#rpass").addClass("has-success");
+		}
+		else if((document.getElementById("new2pass").value.length >= document.getElementById("newpass").value.length) && (document.getElementById("new2pass").value != document.getElementById("newpass").value))
+		{
+			$("#rpass").addClass("has-error");
+			document.getElementById("coinpass").style.display = "";
+		}
+		else
+		{
+			$("#rpass").addClass("has-error");
+			document.getElementById("coinpass").style.display = "none";
+		}
+		
 	}
 	
 	//mudar a foto

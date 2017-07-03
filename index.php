@@ -205,31 +205,30 @@
 	-->
 
 			<!-- DESTAQUES -->
-			
-			
 			<div class="col-md-3">
-				<h3>Notícias Mais Vistas</h3>
-				<div style="border-top: 1px solid #348DE6"></div>
-				<br>
-				<div>
-					<img src="assets/img/thebest.jpg" width="100" height="60" style="float:left;">
-					Cristiano Ronaldo Eleito Melhor do Mundo Pela Fifa
-				</div>
-				<br>
-				<div>
-					<img src="assets/img/thebest.jpg" width="100" height="60" style="float:left;">
-					Cristiano Ronaldo Eleito Melhor do Mundo Pela Fifa
-				</div>
-				<br>
-				<div>
-					<img src="assets/img/thebest.jpg" width="100" height="60" style="float:left;">
-					Cristiano Ronaldo Eleito Melhor do Mundo Pela Fifa
-				</div>
-				<br>
-				<div>
-					<img src="assets/img/thebest.jpg" width="100" height="60" style="float:left;">
-					Cristiano Ronaldo Eleito Melhor do Mundo Pela Fifa
-				</div>
+			<h3>Notícias Mais Vistas</h3>
+			<div style="border-top: 1px solid #348DE6"></div>
+			<br>
+			<?php
+				$SQL23 = "SELECT * FROM noticias ORDER BY views DESC";
+				$resultado23 = mysql_query($SQL23,$LIGA);
+				$asdas = 0;
+				
+				while($registo23 = mysql_fetch_array($resultado23))
+				{
+					echo "<div class=\"row\">";
+					echo "<div class=\"col-md-1\"></div>";
+						echo "<img src=\"{$registo23['imagem']}\" width=\"100\" height=\"60\" style=\"float:left;\">";
+						echo "{$registo23['titulo']}";
+					echo "</div>";
+					echo "<br>";
+					$asdas++;
+					if($asdas == 5)
+					{
+						break;
+					}
+				}
+			?>
 				<!--<h3>Psicóloga</h3>
 				<div style="border-top: 1px solid #348DE6"></div>
 				<br>
