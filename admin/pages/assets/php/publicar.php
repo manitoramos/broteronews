@@ -35,7 +35,7 @@
 			$begin++;
 		}
 		
-		$INS1 = "INSERT INTO noticias (id_categoria,autor,titulo,descricao,desshort,imagem,data) VALUES ('{$_POST['categoria']}','{$_SESSION['user']}','{$_POST['titulo']}','{$_POST['descricao']}','{$_POST['desshort']}','assets/img/{$_FILES['image']['name']}','" .  date("Y-m-d") . "')";
+		$INS1 = "INSERT INTO noticias (categoria,autor,titulo,descricao,desshort,imagem,data) VALUES ('{$_POST['categoria']}','{$_SESSION['user']}','{$_POST['titulo']}','{$_POST['descricao']}','{$_POST['desshort']}','assets/img/{$_FILES['image']['name']}','" .  date("Y-m-d") . "')";
 		$res1 = mysql_query($INS1,$LIGA);
 		
 		//Comparar depois de inserir para ver se inseriu para mandar o (return false ou true) para mostrar a mensagem de (erro ou de sucesso)

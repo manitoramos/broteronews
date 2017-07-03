@@ -104,33 +104,44 @@
                     <li data-target="#carousel-example-generic" data-slide-to="2"></li>
                 </ol>
                 <div class="carousel-inner">
-                    <div class="item active">
-                        <img src="assets/img/thebest.jpg" alt="First slide">
-                        <div class="carousel-caption">
-                            <h3> dsdsdds
-                                </h3>
-                            <p>sdsdsdsd
-                                </p>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <img src="http://placehold.it/1200x500/9b59b6/8e44ad" alt="Second slide">
-                        <div class="carousel-caption">
-                            <h3>
-                                </h3>
-                            <p>
-                                </p>
-                        </div>
-                    </div>
-                    <div class="item">
-                        <img src="http://placehold.it/1200x500/34495e/2c3e50" alt="Third slide">
-                        <div class="carousel-caption">
-                            <h3>
-                                </h3>
-                            <p>
-                                </p>
-                        </div>
-                    </div>
+				<?php
+					$SQL24 = "SELECT * FROM noticias WHERE s_index=1";
+					$resultado24 = mysql_query($SQL24,$LIGA);
+					$eieie = 0;
+					
+					while($registo24 = mysql_fetch_array($resultado24))
+					{
+						if($eieie == 3)
+						{
+							break;
+						}
+						else
+						{
+							if($eieie == 0)
+							{
+								echo "<div class=\"item active\">
+									<img src=\"{$registo24['imagem']}\" alt=\"{$registo24['titulo']}\">
+									<div class=\"carousel-caption\">
+										<h3>{$registo24['titulo']}</h3>
+										<p>{$registo24['desshort']}</p>
+									</div>
+								</div>";
+								$eieie++;
+							}
+							else
+							{
+								echo "<div class=\"item\">
+									<img src=\"{$registo24['imagem']}\" alt=\"{$registo24['titulo']}\">
+									<div class=\"carousel-caption\">
+										<h3>{$registo24['titulo']}</h3>
+										<p>{$registo24['desshort']}</p>
+									</div>
+								</div>";
+							}
+						}
+					}
+				
+				?>
                 </div>
                 <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
                     <span class="glyphicon glyphicon-chevron-left"></span></a><a class="right carousel-control"

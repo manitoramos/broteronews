@@ -1,3 +1,1 @@
-quando se tem menos de 5 noticias.. o campo de lado de noticias mais vistas fica bugado
-
 meter campos em branco se uma noticia for inseriado para caso de querer inserir outra
