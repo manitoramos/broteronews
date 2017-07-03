@@ -35,6 +35,13 @@
 	function hey()
 	{ 
 		document.getElementById("anpass").focus();
+		
+		var x = document.getElementById('changerow');
+		if (x.style.display === 'none') {
+			x.style.display = 'block';
+		} else {
+			x.style.display = 'none';
+		}
 	}
 	
 	
@@ -81,7 +88,7 @@
 		
 		var http = new XMLHttpRequest();
 	
-		var parametros = "savepass=yes&oldpw=" + document.getElementById("anpass").value + "&newpw=" + document.getElementById("newpass").value + "&new2pw=" + document.getElementById("new2pass");
+		var parametros = "savepass=yes&oldpw=" + document.getElementById("anpass").value + "&newpw=" + document.getElementById("newpass").value + "&new2pw=" + document.getElementById("new2pass").value;
 		
 		http.open("POST", "assets/php/perfilpass.php", true);
 		

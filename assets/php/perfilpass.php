@@ -31,7 +31,7 @@
 				
 				$cript2 = sha1(sha1("grubb" . $senha2));
 				
-				$UPT3 = "UPDATE users SET password={$cript2} WHERE user={$_SESSION['user']}";
+				$UPT3 = "UPDATE users SET password='{$cript2}' WHERE user='{$_SESSION['user']}'";
 				
 				$res15 = mysql_query($UPT3,$LIGA);
 				
@@ -41,7 +41,7 @@
 				
 				$mensagem = "Sua password foi mudada com sucesso!!";
 				
-				$email = $registo1['email'];
+				$email = $registo8['email'];
 				
 				// formatação da mensagem em HTML
 				$mensagem = '<html>
@@ -51,7 +51,7 @@
 				</body>
 				</html>';
 
-				$result = mail($email,'Mudança de Password',$mensagem,$headers);
+				$result = mail($email,'Password',$mensagem,$headers);
 				//Verifica se o e-mail foi enviado com Sucesso
 				if(!$result) {   
 					 echo "Error";   

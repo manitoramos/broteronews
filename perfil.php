@@ -141,7 +141,7 @@
                         <td>Password</td>
                         <td>
 							<?php echo "************";?> &nbsp; &nbsp;
-							<a href="#" onclick="hey()" type="" class="warning">
+							<a onclick="hey()" type="" class="warning">
 							<i class="glyphicon glyphicon-edit"></i></a>
 						</td>
                       </tr>
@@ -176,7 +176,7 @@
       </div>
 	  <!-- Password CHANGE -->
 	  
-	  <div class="row">
+	  <div id="changerow" class="row">
         <div class="col-xs-12 col-sm-12 col-md-10 col-lg-10 col-xs-offset-0 col-sm-offset-0 col-md-offset-1 col-lg-offset-1 toppad" >
    
    
@@ -257,6 +257,9 @@
 				$("#div2").toggle("slow");
 			});
 		});
+		
+		document.getElementById("changerow").style.display = "none";
+		
 	</script>
 	
 	<script src="assets/js/perfil.js"></script>
