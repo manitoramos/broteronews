@@ -224,9 +224,27 @@
 			<div class="col-md-3">
 				<h3>Destaques</h3>
 				<div style="border-top: 1px solid #348DE6"></div>
-				<br>
-				<p>Aqui vão ficar as noticias em destaque</p>
-				<br>
+			<br>
+			<?php
+				$SQL23 = "SELECT * FROM noticias ORDER BY views DESC";
+				$resultado23 = mysql_query($SQL23,$LIGA);
+				$asdas = 0;
+				
+				while($registo23 = mysql_fetch_array($resultado23))
+				{
+					echo "<div class=\"row\">";
+					echo "<div class=\"col-md-1\"></div>";
+						echo "<img src=\"{$registo23['imagem']}\" width=\"100\" height=\"60\" style=\"float:left;\">";
+						echo "{$registo23['titulo']}";
+					echo "</div>";
+					echo "<br>";
+					$asdas++;
+					if($asdas == 5)
+					{
+						break;
+					}
+				}
+			?>
 				<!--<h3>Psicóloga</h3>
 				<div style="border-top: 1px solid #348DE6"></div>
 				<br>

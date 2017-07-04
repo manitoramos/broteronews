@@ -141,7 +141,7 @@
                         <td>Password</td>
                         <td>
 							<?php echo "************";?> &nbsp; &nbsp;
-							<a onclick="hey()" type="" class="warning">
+							<a data-balloon="Mudar Password" data-balloon-pos="up" onclick="hey()" type="" class="warning">
 							<i class="glyphicon glyphicon-edit"></i></a>
 						</td>
                       </tr>

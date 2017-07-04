@@ -19,6 +19,8 @@ SET time_zone = "+00:00";
 --
 -- Database: `broteronews`
 --
+DROP DATABASE IF EXISTS `broteronews`;
+
 CREATE DATABASE IF NOT EXISTS `broteronews` DEFAULT CHARACTER SET latin1 COLLATE latin1_swedish_ci;
 USE `broteronews`;
 
