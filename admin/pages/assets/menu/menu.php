@@ -4,6 +4,8 @@
 			display: none;
 		}
 		</style>
+			<link href="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" rel="stylesheet"/>
+	<script src="//cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
         <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -296,7 +298,7 @@
                                     <a href="Admin@noticias">Mostrar Todas as Notícias</a>
                                 </li>
 								<li>
-                                    <a href="#">Pedido de Categoria</a>
+                                    <a data-toggle="modal" data-target="#categoria_modal" href="#">Pedido de Categoria</a>
                                 </li>
                             </ul>
                             <!-- /.nav-second-level -->
@@ -327,7 +329,7 @@
 		   	<div class="modal-content">
 		        <div class="modal-header">
 					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-					<h4 class="modal-title" id="myModalLabel"><span id="n_tariff">Pedido de Nova Categoria</span></h4>
+					<h4 class="modal-title" id="myModalLabel">Pedido de Nova Categoria</h4>
 				</div>
 				<div class="modal-body">
 				<form class="form-horizontal" id="ins_categoria" method="POST" enctype="multipart/form-data">	
@@ -344,7 +346,7 @@
 				</div>
 				<div class="modal-footer">
 					<button type="button" class="btn btn-default" style="float:left" data-dismiss="modal">Close</button>
-					<input type="submit" id="save" class="btn btn-primary" value="Save">
+					<input onclick="categopep()" type="button" id="save" class="btn btn-primary" value="Enviar Pedido">
 				</div>
 				</form>	
 			</div><!-- /.modal-content -->
@@ -354,58 +356,36 @@
 <!-- \... MODAL PEDIDO DE CATEGORIA-->
 
 <script>
-$(document).ready(function (e) {
-	$("#ins_categoria").on('submit',(function(e) {
-		//
-		alertify.delay(0);
-		alertify.closeLogOnClick(true);
-		alertify.logPosition("bottom right");
-		alertify.log("Connecting with the database!");
-		//
-		e.preventDefault();
-		$.ajax({
-        	url: "./assets/php/tariff.php",
-			type: "POST",
-			data:  new FormData(this) ,
-			contentType: false,
-    	    cache: false,
-			processData:false,
-			success: function(data)
-		    {
 
-				if(data == "editar")//IF EDIT IS BEEN SUCESSFULL THE FUNCTION RETURN THIS
+function categopep()
+{
+	var http = new XMLHttpRequest();
+	
+	var parametros = "categoria_pedido=" + document.getElementById("categoria_pedido").value;
+	
+	http.open("POST", "./admin/pages/assets/php/categoria.php", true);
+	
+	http.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+
+	http.onreadystatechange = function() {
+		if(http.readyState == 4 && http.status == 200) 
+		{
+			
+				if(http.responseText == "true")
 				{
-					$("#tariff_modal .close").click();
-					alertify.delay(0);
-					alertify.closeLogOnClick(true);
-					alertify.logPosition("bottom right");
-					alertify.success("Tariff was edited successful!");
+					$("#categoria_modal .close").click();
+					toastr["success"]("Pedido de Categoria feito com sucesso, Aguarde!");
 				}
-				else if(data == "inserir")//IF INSERT IS BEEN SUCESSFULL THE FUNCTION RETURN THIS
+				else
 				{
-					$("#tariff_modal .close").click();
-					alertify.delay(0);
-					alertify.closeLogOnClick(true);
-					alertify.logPosition("bottom right");
-					alertify.success("Tariff was inserted successful!");
+					toastr["error"]("Erro ao satisfazer o seu pedido!");
 				}
-				else//IF SOMETHING WRONG RETURN THIS
-				{
-					alertify.delay(0);
-					alertify.closeLogOnClick(true);
-					alertify.logPosition("bottom right");
-					alertify.error("Something Wrong!");
-				}
-		    },
-		  	error: function() 
-	    	{
-				alertify.delay(0);
-				alertify.closeLogOnClick(true);
-				alertify.logPosition("bottom right");
-				alertify.error("Something Wrong!!");
-	    	} 	        
-		});
-	}));
-});
+			
+			//console.log(http.responseText);
+			
+		}
+	}
+	http.send(parametros);
+}
 
 </script>

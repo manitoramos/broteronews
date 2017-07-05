@@ -9,12 +9,20 @@
 
 		$resultado1 = mysql_query($SQL1,$LIGA);
 	}
-	else if($_GET["info"] == 2)//Mudar este para reportar comentario
+	else if($_GET['info'] == 2)
 	{
-		$SQL1 = "UPDATE comentarios SET Confirmed='Yes' WHERE sku='{$_GET['sku']}'";
-
-		$resultado1 = mysql_query($SQL1,$LIGA);
+		$UPD = "UPDATE comentarios SET reports=reports+1 WHERE sku='{$_GET['sku']}'";
+		
+		$res = mysql_query($UPD,$LIGA);
+		
+	}
+	else if($_GET['info'] == 3)
+	{
+		$UPD = "UPDATE comentarios SET reports=0 WHERE sku='{$_GET['sku']}'";
+		
+		$res = mysql_query($UPD,$LIGA);
+		
 	}
 
-	header("Location: ..\..\Admin@comentarios");
+	header("Location: {$_SESSION['oldpage']}");
 ?>

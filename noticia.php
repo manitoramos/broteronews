@@ -19,6 +19,10 @@
 	
 	$registo1 = mysql_fetch_array($resultado1);
 	
+	$_SESSION['oldpage'] = "http://" . $_SERVER["SERVER_NAME"] . $_SERVER['REQUEST_URI'];
+	
+	
+	
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -171,8 +175,11 @@
 									if($registo3['previlegios'] == 3){
 										echo "&nbsp;<a href=\"\"><span class=\"space\">Reply</span></a> <a href=\"Admin@coment/{$registo1["sku"]}/1\"><span class=\"space\">Eliminar</span></a>";
 									}
+									else if($registo1['user'] == $_SESSION['user']){
+										echo "&nbsp;<a href=\"Admin@coment/{$registo1["sku"]}/1\"><span class=\"space\">Eliminar</span></a> <a href=\"#\"><span class=\"space\">Editar</span></a>";
+									}
 									else{
-										echo "&nbsp;<a href=\"Admin@coment/{$registo1["sku"]}/1\"><span class=\"space\">Eliminar</span></a> <a href=\"Admin@coment/{$registo1["sku"]}/2\"><span class=\"space\">Reportar</span></a>";
+										echo "&nbsp;<a href=\"#\"><span class=\"space\">Reply</span></a> <a href=\"Admin@coment/{$registo1["sku"]}/2\"><span class=\"space\">Reportar</span></a>";
 									}
 								echo "</div>";
 								echo "</div>";//panel panel-default 
@@ -234,8 +241,9 @@
 				{
 					echo "<div class=\"row\">";
 					echo "<div class=\"col-md-1\"></div>";
+						echo "<a style=\"text-decoration: none;\" href=\"noticia@{$registo23['id']}\">";
 						echo "<img src=\"{$registo23['imagem']}\" width=\"100\" height=\"60\" style=\"float:left;\">";
-						echo "{$registo23['titulo']}";
+						echo "{$registo23['titulo']}</a>";
 					echo "</div>";
 					echo "<br>";
 					$asdas++;

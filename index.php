@@ -229,8 +229,9 @@
 				{
 					echo "<div class=\"row\">";
 					echo "<div class=\"col-md-1\"></div>";
+						echo "<a style=\"text-decoration: none;\" href=\"noticia@{$registo23['id']}\">";
 						echo "<img src=\"{$registo23['imagem']}\" width=\"100\" height=\"60\" style=\"float:left;\">";
-						echo "{$registo23['titulo']}";
+						echo "{$registo23['titulo']}</a>";
 					echo "</div>";
 					echo "<br>";
 					$asdas++;
