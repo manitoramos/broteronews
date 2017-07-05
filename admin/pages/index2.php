@@ -169,6 +169,16 @@
                     </div>
                 </div>
             </div>
+			<!-- Painel de informação Noticias -->
+			<div class="panel panel-info">
+                        <div class="panel-heading">
+                            Notícias
+                        </div>
+                        <div class="panel-body">
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum tincidunt est vitae ultrices accumsan. Aliquam ornare lacus adipiscing, posuere lectus et, fringilla augue.</p>
+                        </div>
+                    </div>
+                </div>
 			<?php
 			/*
             <!-- /.row -->

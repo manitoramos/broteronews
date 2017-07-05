@@ -59,7 +59,7 @@
                             </a>
                         </li>
 						<li>
-                            <a class="text-center" href="Admin@nova_categoria">
+                            <a data-toggle="modal" data-target="#categoria_modal" class="text-center" href="Admin@nova_categoria">
                                 <strong>Pedido de Categoria</strong>
                                 <i class="fa fa-angle-right"></i>
                             </a>
@@ -74,7 +74,7 @@
 					<!-- /.dropdown-messages --><!-- /.dropdown-messages --><!-- /.dropdown-messages --><!-- /.dropdown-messages -->
                     <!-- /.dropdown-messages --><!-- /.dropdown-messages --><!-- /.dropdown-messages --><!-- /.dropdown-messages -->
                 </li>
-                <!-- /.dropdown -->
+                <!-- /.dropdown 
                 <li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#">
                         <i class="fa fa-tasks fa-fw"></i> <i class="fa fa-caret-down"></i>
@@ -150,10 +150,10 @@
                                 <i class="fa fa-angle-right"></i>
                             </a>
                         </li>
-                    </ul>
+                    </ul>-->
                     <!-- /.dropdown-tasks --><!-- /.dropdown-tasks --><!-- /.dropdown-tasks --><!-- /.dropdown-tasks -->
-					<!-- /.dropdown-tasks --><!-- /.dropdown-tasks --><!-- /.dropdown-tasks --><!-- /.dropdown-tasks -->
-                </li>
+					<!-- /.dropdown-tasks --><!-- /.dropdown-tasks --><!-- /.dropdown-tasks --><!-- /.dropdown-tasks 
+                </li>-->
                 <!-- /.dropdown -->
                 <li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" href="#">
@@ -320,3 +320,92 @@
             </div>
             <!-- /.navbar-static-side -->
         </nav>
+		
+		<!-- MODAL PEDIDO DE CATEGORIA -->
+	<div class="modal fade" id="categoria_modal" tabindex="-1" role="dialog"  aria-labelledby="myModalLabel" aria-hidden="true">
+		<div class="modal-dialog modal-lg">
+		   	<div class="modal-content">
+		        <div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+					<h4 class="modal-title" id="myModalLabel"><span id="n_tariff">Pedido de Nova Categoria</span></h4>
+				</div>
+				<div class="modal-body">
+				<form class="form-horizontal" id="ins_categoria" method="POST" enctype="multipart/form-data">	
+					<fieldset>
+						<center>
+							<div class="form-group"> 
+								<label class="col-md-2 control-label" for="account_type">Categoria:</label>  
+								<div class="col-md-5">
+									<input type="text" class="form-control input-md" name="categoria_pedido" id="categoria_pedido" placeholder="Digite aqui a categoria pretendidas" value=""/>
+								</div>
+							</div>   
+						</center>
+					</fieldset>	
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-default" style="float:left" data-dismiss="modal">Close</button>
+					<input type="submit" id="save" class="btn btn-primary" value="Save">
+				</div>
+				</form>	
+			</div><!-- /.modal-content -->
+		</div><!-- /.modal-dialog -->
+	</div><!-- /.modal -->
+</div>
+<!-- \... MODAL PEDIDO DE CATEGORIA-->
+
+<script>
+$(document).ready(function (e) {
+	$("#ins_categoria").on('submit',(function(e) {
+		//
+		alertify.delay(0);
+		alertify.closeLogOnClick(true);
+		alertify.logPosition("bottom right");
+		alertify.log("Connecting with the database!");
+		//
+		e.preventDefault();
+		$.ajax({
+        	url: "./assets/php/tariff.php",
+			type: "POST",
+			data:  new FormData(this) ,
+			contentType: false,
+    	    cache: false,
+			processData:false,
+			success: function(data)
+		    {
+
+				if(data == "editar")//IF EDIT IS BEEN SUCESSFULL THE FUNCTION RETURN THIS
+				{
+					$("#tariff_modal .close").click();
+					alertify.delay(0);
+					alertify.closeLogOnClick(true);
+					alertify.logPosition("bottom right");
+					alertify.success("Tariff was edited successful!");
+				}
+				else if(data == "inserir")//IF INSERT IS BEEN SUCESSFULL THE FUNCTION RETURN THIS
+				{
+					$("#tariff_modal .close").click();
+					alertify.delay(0);
+					alertify.closeLogOnClick(true);
+					alertify.logPosition("bottom right");
+					alertify.success("Tariff was inserted successful!");
+				}
+				else//IF SOMETHING WRONG RETURN THIS
+				{
+					alertify.delay(0);
+					alertify.closeLogOnClick(true);
+					alertify.logPosition("bottom right");
+					alertify.error("Something Wrong!");
+				}
+		    },
+		  	error: function() 
+	    	{
+				alertify.delay(0);
+				alertify.closeLogOnClick(true);
+				alertify.logPosition("bottom right");
+				alertify.error("Something Wrong!!");
+	    	} 	        
+		});
+	}));
+});
+
+</script>
