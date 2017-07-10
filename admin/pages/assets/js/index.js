@@ -64,3 +64,52 @@ function categoriapub(x,y)
 	}
 	http.send(parametros);
 }
+
+//APAGAR NOTICIAS OU UPDATE
+function elenoticia(x,y)
+{
+	
+	var http = new XMLHttpRequest();
+	
+	var parametros = "acao=" + x + "&notid=" + y;
+	
+	http.open("POST", "./admin/pages/assets/php/funoticia.php", true);
+	
+	http.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+
+	http.onreadystatechange = function() {
+		if(http.readyState == 4 && http.status == 200) 
+		{
+			
+			if(http.responseText == "truedel")
+				{
+					toastr["success"]("Noticia eleminada com sucesso!");
+					$("#"+y).remove();
+					$("#tr"+y).remove();
+					t = document.getElementById("noticianoo").innerHTML;
+					t = t-1;
+					document.getElementById("noticianoo").innerHTML = t;
+				}
+				else if(http.responseText == "falsedel")
+				{
+					toastr["error"]("Erro ao tentar eleminar a noticia!");
+				}
+				else if(http.responseText == "trueup")
+				{
+					toastr["success"]("Noticia publicada com sucesso!");
+					$("#"+y).remove();
+					$("#tr"+y).remove();
+					t = document.getElementById("noticianoo").innerHTML;
+					t = t-1;
+					document.getElementById("noticianoo").innerHTML = t;
+				}
+				else if(http.responseText == "falseup")
+				{
+					toastr["error"]("Erro ao tentar aceitar a noticia!");
+				}
+			//console.log(http.responseText);
+			
+		}
+	}
+	http.send(parametros);
+}

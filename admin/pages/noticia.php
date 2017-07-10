@@ -60,47 +60,7 @@ toastr.options = {
   "showMethod": "fadeIn",
   "hideMethod": "fadeOut"
 }
-	$(document).ready(function (e) {
-	$("#mandar").on('submit',(function(e) {
-		e.preventDefault();
-		$.ajax({
-        	url: "./admin/pages/assets/php/publicar.php",
-			type: "POST",
-			data:  new FormData(this),
-			contentType: false,
-    	    cache: false,
-			processData:false,
-			success: function(data)
-		    {
-				if(data == "true"){
-					toastr["success"]("Notícia inserida com Sucesso! Aguardando Publicação");
-					mudarnot();//notificação mudificar para dar a admin que esteja on
-				}else if(data == "false"){
-					toastr["error"]("Erro ao Inserir a Notícia!!");
-					//alertify.log("<img src='" + data +"'><h3>This is HTML</h3><p>It's great, right?</p>");
-				}else{
-					var str = data;
-					var res = str.split("///");
-					if(res[1] == "")
-					{
-						toastr["error"]("Alguma coisa deu errado!!");
-					}
-					else
-					{
-						toastr["warning"](res[1]);
-						if(res[2] == "titulo"){document.getElementById("titulo").focus();}
-						else if(res[2] == "descricao"){document.getElementById("summernote").focus();}
-						else if(res[2] == "desshort"){document.getElementById("desshort").focus();}
-					}
-				}
-		    },
-		  	error: function() 
-	    	{
-				toastr["error"]("Erro! Não inseriste alguma coisa bem!");
-	    	} 	        
-	   });
-	}));
-});
+	
 
 		//meter no info das notificações de noticas 1
 		function mudarnot(){
@@ -224,6 +184,47 @@ toastr.options = {
     <script src="admin/dist/js/sb-admin-2.js"></script>
 	
 	<script>
+	$(document).ready(function (e) {
+	$("#mandar").on('submit',(function(e) {
+		e.preventDefault();
+		$.ajax({
+        	url: "./admin/pages/assets/php/publicar.php",
+			type: "POST",
+			data:  new FormData(this),
+			contentType: false,
+    	    cache: false,
+			processData:false,
+			success: function(data)
+		    {
+				if(data == "true"){
+					toastr["success"]("Notícia inserida com Sucesso! Aguardando Publicação");
+					mudarnot();//notificação mudificar para dar a admin que esteja on
+				}else if(data == "false"){
+					toastr["error"]("Erro ao Inserir a Notícia!!");
+					//alertify.log("<img src='" + data +"'><h3>This is HTML</h3><p>It's great, right?</p>");
+				}else{
+					var str = data;
+					var res = str.split("///");
+					if(res[1] == "")
+					{
+						toastr["error"]("Alguma coisa deu errado!!");
+					}
+					else
+					{
+						toastr["warning"](res[1]);
+						if(res[2] == "titulo"){document.getElementById("titulo").focus();}
+						else if(res[2] == "descricao"){document.getElementById("summernote").focus();}
+						else if(res[2] == "desshort"){document.getElementById("desshort").focus();}
+					}
+				}
+		    },
+		  	error: function() 
+	    	{
+				toastr["error"]("Erro! Não inseriste alguma coisa bem!");
+	    	} 	        
+	   });
+	}));
+});
 	$('#summernote').summernote({
 	  height: 300,                 // set editor height
 	  minHeight: 300,             // set minimum height of editor

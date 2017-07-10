@@ -92,7 +92,7 @@
 									{
 										$i++;
 									}
-									echo "<div class=\"huge\">{$i}</div>";
+									echo "<div id=\"noticianoo\" class=\"huge\">{$i}</div>";
 								?>
                                     <div>Noticias!</div>
                                 </div>
@@ -233,7 +233,7 @@
 								//selecionar os acessos
 									echo "<tr id=\"tr{$registo35['id']}\">
 										<td>
-											<a id=\"eye{$registo35['id']}\"><i class=\"-alt fa fa-2x fa-eye fa-fw\"></i></a>
+											<a target=\"_blank\" href=\"previewnoticia@{$registo35['id']}\" id=\"eye{$registo35['id']}\"><i class=\"-alt fa fa-2x fa-eye fa-fw\"></i></a>
 										</td>
 										<td>
 											<h4>
@@ -255,13 +255,13 @@
 										<td>{$registo35['data']}</td>
 										<td>
 											<div class=\"btn-group\">";
-													echo "<button class=\"btn btn-default\" id=\"des{$registo35['id']}\" value=\"apagar\" type=\"button\">
+													echo "<button class=\"btn btn-default\" id=\"des{$registo35['id']}\" onclick=\"elenoticia('apagar',{$registo35['id']})\" value=\"apagar\" type=\"button\">
 														  <i class=\"fa fa-fw s fa-remove\"></i></button>";
 													/*echo "<button class=\"btn btn-default\" id=\"des{$registo35['id']}\" onclick=\"desativar({$registo35['id']})\" value=\"ativar\" type=\"button\">
 														  <i class=\"fa fa-fw s fa-check\"></i>Ativar</button>";*/
 												echo "
-												<button id=\"conf{$registo35['id']}\" class=\"btn btn-default\" value=\"{$registo35['id']}\" type=\"button\">
-													<i class=\"fa fa-fw fa-cog\"></i></button>
+												<button id=\"ele{$registo35['id']}\" onclick=\"elenoticia('publicar',{$registo35['id']})\" class=\"btn btn-default\" value=\"publicar\" type=\"button\">
+													<i class=\"fa fa-fw fa-check\"></i></button>
 											</div>
 										</td>
 									</tr>";

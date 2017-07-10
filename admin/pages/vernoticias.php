@@ -86,13 +86,20 @@
 										<td>{$registo35['data']}</td>
 										<td>
 											<div class=\"btn-group\">";
-													echo "<button class=\"btn btn-default\" id=\"des{$registo35['id']}\" value=\"apagar\" type=\"button\">
-														  <i class=\"fa fa-fw s fa-remove\"></i></button>";
 													/*echo "<button class=\"btn btn-default\" id=\"des{$registo35['id']}\" onclick=\"desativar({$registo35['id']})\" value=\"ativar\" type=\"button\">
 														  <i class=\"fa fa-fw s fa-check\"></i>Ativar</button>";*/
 												echo "
-												<button id=\"conf{$registo35['id']}\" class=\"btn btn-default\" value=\"{$registo35['id']}\" type=\"button\">
+												<button id=\"conf{$registo35['id']}\" class=\"btn btn-default dropdown-toggle\" data-toggle=\"dropdown\" value=\"{$registo35['id']}\" type=\"button\">
 													<i class=\"fa fa-fw fa-cog\"></i></button>
+													<ul class=\"dropdown-menu pull-right\" role=\"menu\">
+													<li><a href=\"#\">Destacar no Slide do index</a>
+													</li>
+													<li><a href=\"#\">Destacar no Slide do menu</a>
+													</li>
+													<li class=\"divider\"></li>
+													<li><a href=\"#\" value=\"apagar\">Remover Noticia</a>
+													</li>
+												</ul>
 											</div>
 										</td>
 									</tr>";
@@ -123,6 +130,58 @@
 
     <!-- Custom Theme JavaScript -->
     <script src="admin/dist/js/sb-admin-2.js"></script>
+	
+	
+	<script>
+	//APAGAR NOTICIAS OU UPDATE
+	function elenoticia(x,y)
+	{
+		
+		var http = new XMLHttpRequest();
+		
+		var parametros = "acao=" + x + "&notid=" + y;
+		
+		http.open("POST", "./admin/pages/assets/php/funoticia.php", true);
+		
+		http.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
+
+		http.onreadystatechange = function() {
+			if(http.readyState == 4 && http.status == 200) 
+			{
+				
+				if(http.responseText == "truedel")
+					{
+						toastr["success"]("Noticia eleminada com sucesso!");
+						$("#"+y).remove();
+						$("#tr"+y).remove();
+						t = document.getElementById("noticianoo").innerHTML;
+						t = t-1;
+						document.getElementById("noticianoo").innerHTML = t;
+					}
+					else if(http.responseText == "falsedel")
+					{
+						toastr["error"]("Erro ao tentar eleminar a noticia!");
+					}
+					else if(http.responseText == "trueup")
+					{
+						toastr["success"]("Noticia publicada com sucesso!");
+						$("#"+y).remove();
+						$("#tr"+y).remove();
+						t = document.getElementById("noticianoo").innerHTML;
+						t = t-1;
+						document.getElementById("noticianoo").innerHTML = t;
+					}
+					else if(http.responseText == "falseup")
+					{
+						toastr["error"]("Erro ao tentar aceitar a noticia!");
+					}
+				//console.log(http.responseText);
+				
+			}
+		}
+		http.send(parametros);
+	}
+	</script>
 
 </body>
 

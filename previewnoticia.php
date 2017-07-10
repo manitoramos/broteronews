@@ -7,23 +7,6 @@
 	else
 	{
 		include("assets/bd/bd.php");
-		
-		$SEL4 = "SELECT * FROM noticias WHERE id={$_GET['not']}";
-		
-		$res = mysql_query($SEL4,$LIGA);
-		
-		$reg = mysql_fetch_array($res);
-		
-		if($reg['Confirmed'] == 'No')
-		{
-			header("Location: {$_SESSION['pagina']}");
-		}
-		else
-		{
-			$UPD1 = "UPDATE noticias SET views=views+1 WHERE id={$_GET['not']}";
-			
-			$res = mysql_query($UPD1,$LIGA);
-		}
 	}
 	
 	$SQL1 = "SELECT * FROM noticias WHERE id={$_GET['not']}";
