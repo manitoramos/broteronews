@@ -20,7 +20,7 @@ RewriteRule ^(.*)@users2/?$ admin/pages/usersperm2.php [L]
 RewriteRule ^(.*)@noticias/?$ admin/pages/vernoticias.php [L]
 RewriteRule ^previewnoticia@(.*) previewnoticia.php?not=$1 [L]
 RewriteRule ^perfil/?$ perfil.php
-RewriteRule ^categoria/?$ categoria.php
+RewriteRule ^categoria@(.*) categoria.php?cat=$1 [L]
 
 
 

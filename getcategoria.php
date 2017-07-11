@@ -3,7 +3,7 @@ require_once("dbcontroller.php");
 $db_handle = new DBController();
 $perPage = 8;
 
-$sql = "SELECT * from noticias WHERE Confirmed='Yes' ORDER BY id DESC";
+$sql = "SELECT * from noticias WHERE categoria='{$_GET['cat']}' ORDER BY id DESC";
 $page = 1;
 if(!empty($_GET["page"])) {
 $page = $_GET["page"];
@@ -34,7 +34,7 @@ foreach($faq as $k=>$v) {
 		                   $output .= "<div class=\"col-md-3 col-sm-6\">";
 		                      $output .= "<div class=\" ex2\">";
 $output .= "<span class=\"pull-left text-muted\" style=\"font-size:70%\">{$faq[$k]['data']}</span>";
-$output .= "<div class=\"pull-right text-muted monte\" style=\"font-size:70%;color:black;\"><span><a style=\"text-decoration:none;color:black;\" href=\"categoria@{$faq[$k]['categoria']}\">{$faq[$k]['categoria']}</a></span></div>";
+$output .= "<div class=\"pull-right text-muted monte\" style=\"font-size:70%;color:black;\"><span>{$faq[$k]['categoria']}</span></div>";
 $output .= "<a href=\"noticia@{$faq[$k]['id']}\"><img class=\"immgg\" src=\"{$faq[$k]['imagem']}\" alt=\"\"></a>";
 		                            $output .= "<div class=\"caption\">";
 		                                $output .= "<h4><a style=\"text-decoration:none;\" href=\"noticia@{$faq[$k]['id']}\">{$faq[$k]['titulo']}</a></h4>";

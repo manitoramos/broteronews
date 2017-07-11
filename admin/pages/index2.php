@@ -415,7 +415,7 @@
 									}
 									echo "<div class=\"huge\">{$i}</div>";
 								?>
-                                    <div>Noticias Pendentes!</div>
+                                    <div>Noticias!</div>
                                 </div>
                             </div>
                         </div>
@@ -459,7 +459,7 @@
                                 </div>
                                 <div class="col-xs-9 text-right">
                                     <div class="huge">0</div>
-                                    <div>Categorias Pendentes!</div>
+                                    <div>Categorias!</div>
                                 </div>
                             </div>
                         </div>

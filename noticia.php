@@ -134,7 +134,18 @@
 					<p><b><?php echo $registo1['data']?></b></p>
 				</div>
 				<div class="col-md-3">
-					<p><b>visualizacoes, likes e comentarios</b></p>
+					<p class="pull-right"><b><i class="-alt fa fa fa-eye fa-fw"><?php echo $registo1['views']; ?></i>&nbsp;&nbsp;&nbsp;&nbsp;<i class="-alt fa fa fa-comment-o fa-fw"><?php 
+					
+					$SQL1 = "SELECT * FROM comentarios WHERE id=\"{$registo1['id']}\"";
+			
+					$resultado1 = mysql_query($SQL1,$LIGA);
+								
+					$num_rows = mysql_num_rows($resultado1);
+					
+					echo $num_rows; 
+					
+					
+					?></i>&nbsp;&nbsp;&nbsp;</b></p>
 				</div>
 			</div>
 			<div class="row">

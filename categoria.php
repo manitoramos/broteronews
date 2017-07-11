@@ -31,7 +31,7 @@
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
     <link rel="shortcut icon" href="bootstrap-solid.ico">
-    <style> 
+    <style>
       .ex2 {
         width:200px;
         height:290px;
@@ -95,6 +95,73 @@
 	<!-- \\TOP MENU -->
 	
     <div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div id="carousel-example-generic" class="carousel slide" style="static" data-ride="carousel">
+                <ol class="carousel-indicators">
+                    <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+                    <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+                    <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+                </ol>
+                <div class="carousel-inner">
+				<?php
+					$SQL24 = "SELECT * FROM noticias WHERE s_index=1";
+					$resultado24 = mysql_query($SQL24,$LIGA);
+					$eieie = 0;
+					
+					while($registo24 = mysql_fetch_array($resultado24))
+					{
+						if($eieie == 3)
+						{
+							break;
+						}
+						else
+						{
+							if($eieie == 0)
+							{
+								echo "<div class=\"item active\">
+									<img src=\"{$registo24['imagem']}\" alt=\"{$registo24['titulo']}\">
+									<div class=\"carousel-caption\">
+										<h3>{$registo24['titulo']}</h3>
+										<p>{$registo24['desshort']}</p>
+									</div>
+								</div>";
+								$eieie++;
+							}
+							else
+							{
+								echo "<div class=\"item\">
+									<img src=\"{$registo24['imagem']}\" alt=\"{$registo24['titulo']}\">
+									<div class=\"carousel-caption\">
+										<h3>{$registo24['titulo']}</h3>
+										<p>{$registo24['desshort']}</p>
+									</div>
+								</div>";
+							}
+						}
+					}
+				
+				?>
+                </div>
+                <a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
+                    <span class="glyphicon glyphicon-chevron-left"></span></a><a class="right carousel-control"
+                        href="#carousel-example-generic" data-slide="next"><span class="glyphicon glyphicon-chevron-right">
+                        </span></a>
+            </div>
+            <div class="main-text hidden-xs">
+                <div class="col-md-12 text-center">
+                    <h1>
+                        </h1>
+                    <h3>
+
+                    </h3>
+                    <div class="">
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 <div id="push">
 </div>
 
@@ -103,13 +170,14 @@
         <div class="col-md-9">
 
           <!--noticias-->
-          <h3>Categoria: </h3>
+          <h3>Categoria: <?php echo $_GET['cat']; ?></h3>
           <div style="border-top: 1px solid #348DE6"></div>
           <br>
 
 	      		<div id="faq-result">
-				<?php include('getresult.php'); ?>
+				<?php include('getcategoria.php'); ?>
 				</div>
+				
 	
 
 		</div>

@@ -84,7 +84,7 @@
 										echo "<ul>";
 										echo "<li class=\"dropdown-header\">&nbsp;</li>";
 									}
-									echo "<li><a>{$registo8['categoria']}</a></li>";
+									echo "<li><a style=\"text-decoration:none;color:black;\" href=\"categoria@{$registo8['categoria']}\">{$registo8['categoria']}</a></li>";
 									$countcat++;
 								}
 								echo "</ul>";
